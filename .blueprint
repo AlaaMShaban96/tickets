@@ -1,0 +1,125 @@
+created:
+    - app/Http/Controllers/CountryController.php
+    - app/Http/Controllers/AirportController.php
+    - app/Http/Controllers/DayController.php
+    - app/Http/Controllers/SeatTypeController.php
+    - app/Http/Controllers/AirlineController.php
+    - app/Http/Controllers/PlaneController.php
+    - app/Http/Controllers/PassengerController.php
+    - app/Http/Controllers/TicketController.php
+    - app/Http/Controllers/TripController.php
+    - database/factories/CountryFactory.php
+    - database/factories/AirportFactory.php
+    - database/factories/DayFactory.php
+    - database/factories/SeatTypeFactory.php
+    - database/factories/AirlineFactory.php
+    - database/factories/PlaneFactory.php
+    - database/factories/PassengerFactory.php
+    - database/factories/TicketFactory.php
+    - database/factories/TripFactory.php
+    - database/migrations/2023_03_06_212852_create_countries_table.php
+    - database/migrations/2023_03_06_212853_create_airports_table.php
+    - database/migrations/2023_03_06_212854_create_days_table.php
+    - database/migrations/2023_03_06_212855_create_seat_types_table.php
+    - database/migrations/2023_03_06_212856_create_airlines_table.php
+    - database/migrations/2023_03_06_212857_create_planes_table.php
+    - database/migrations/2023_03_06_212858_create_passengers_table.php
+    - database/migrations/2023_03_06_212859_create_tickets_table.php
+    - database/migrations/2023_03_06_212900_create_trips_table.php
+    - database/migrations/2023_03_06_212901_create_day_trip_table.php
+    - database/migrations/2023_03_06_212902_create_plane_seat_type_table.php
+    - database/migrations/2023_03_06_212903_create_seats_table.php
+    - app/Models/Country.php
+    - app/Models/Airport.php
+    - app/Models/Day.php
+    - app/Models/SeatType.php
+    - app/Models/Airline.php
+    - app/Models/Plane.php
+    - app/Models/Passenger.php
+    - app/Models/Ticket.php
+    - app/Models/Trip.php
+    - database/seeders/CountrySeeder.php
+    - database/seeders/AirportSeeder.php
+    - database/seeders/DaySeeder.php
+    - database/seeders/SeatTypeSeeder.php
+    - database/seeders/AirlineSeeder.php
+    - database/seeders/PlaneSeeder.php
+    - database/seeders/PassengerSeeder.php
+    - database/seeders/TicketSeeder.php
+    - database/seeders/TripSeeder.php
+    - tests/Feature/Http/Controllers/CountryControllerTest.php
+    - tests/Feature/Http/Controllers/AirportControllerTest.php
+    - tests/Feature/Http/Controllers/DayControllerTest.php
+    - tests/Feature/Http/Controllers/SeatTypeControllerTest.php
+    - tests/Feature/Http/Controllers/AirlineControllerTest.php
+    - tests/Feature/Http/Controllers/PlaneControllerTest.php
+    - tests/Feature/Http/Controllers/PassengerControllerTest.php
+    - tests/Feature/Http/Controllers/TicketControllerTest.php
+    - tests/Feature/Http/Controllers/TripControllerTest.php
+    - app/Http/Requests/CountryStoreRequest.php
+    - app/Http/Requests/CountryUpdateRequest.php
+    - app/Http/Requests/AirportStoreRequest.php
+    - app/Http/Requests/AirportUpdateRequest.php
+    - app/Http/Requests/DayStoreRequest.php
+    - app/Http/Requests/DayUpdateRequest.php
+    - app/Http/Requests/SeatTypeStoreRequest.php
+    - app/Http/Requests/SeatTypeUpdateRequest.php
+    - app/Http/Requests/AirlineStoreRequest.php
+    - app/Http/Requests/AirlineUpdateRequest.php
+    - app/Http/Requests/PlaneStoreRequest.php
+    - app/Http/Requests/PlaneUpdateRequest.php
+    - app/Http/Requests/PassengerStoreRequest.php
+    - app/Http/Requests/PassengerUpdateRequest.php
+    - app/Http/Requests/TicketStoreRequest.php
+    - app/Http/Requests/TicketUpdateRequest.php
+    - app/Http/Requests/TripStoreRequest.php
+    - app/Http/Requests/TripUpdateRequest.php
+    - resources/views/country/index.blade.php
+    - resources/views/country/create.blade.php
+    - resources/views/country/show.blade.php
+    - resources/views/country/edit.blade.php
+    - resources/views/airport/index.blade.php
+    - resources/views/airport/create.blade.php
+    - resources/views/airport/show.blade.php
+    - resources/views/airport/edit.blade.php
+    - resources/views/day/index.blade.php
+    - resources/views/day/create.blade.php
+    - resources/views/day/show.blade.php
+    - resources/views/day/edit.blade.php
+    - resources/views/seatType/index.blade.php
+    - resources/views/seatType/create.blade.php
+    - resources/views/seatType/show.blade.php
+    - resources/views/seatType/edit.blade.php
+    - resources/views/airline/index.blade.php
+    - resources/views/airline/create.blade.php
+    - resources/views/airline/show.blade.php
+    - resources/views/airline/edit.blade.php
+    - resources/views/plane/index.blade.php
+    - resources/views/plane/create.blade.php
+    - resources/views/plane/show.blade.php
+    - resources/views/plane/edit.blade.php
+    - resources/views/passenger/index.blade.php
+    - resources/views/passenger/create.blade.php
+    - resources/views/passenger/show.blade.php
+    - resources/views/passenger/edit.blade.php
+    - resources/views/ticket/index.blade.php
+    - resources/views/ticket/create.blade.php
+    - resources/views/ticket/show.blade.php
+    - resources/views/ticket/edit.blade.php
+    - resources/views/trip/index.blade.php
+    - resources/views/trip/create.blade.php
+    - resources/views/trip/show.blade.php
+    - resources/views/trip/edit.blade.php
+updated:
+    - routes/web.php
+models:
+    User: { name: 'string:191', email: 'string:191', email_verified_at: 'datetime nullable', password: 'string:191', remember_token: 'string:100 nullable' }
+    Country: { id: id, name: 'string:20', deleted_at: 'nullable timestamp', relationships: { hasMany: Airport } }
+    Airport: { id: id, name: 'string:100', county_id: 'id foreign:counties', deleted_at: 'nullable timestamp', relationships: { hasMany: Trip } }
+    Day: { id: id, name: 'string:10', code: 'string 10', deleted_at: 'nullable timestamp', relationships: { belongsToMany: Trip } }
+    SeatType: { id: id, name: 'string:20', deleted_at: 'nullable timestamp', relationships: { belongsToMany: 'Plane,Trip:seats' } }
+    Airline: { id: id, name: string, logo: 'nullable text', deleted_at: 'nullable timestamp', relationships: { hasMany: Plane } }
+    Plane: { id: id, name: string, photo: 'nullable text', airline_id: 'id foreign:airlines', deleted_at: 'nullable timestamp', relationships: { belongsToMany: SeatType, hasMany: Trip } }
+    Passenger: { id: id, ticket_id: 'id foreign:tickets', name: string, last_name: string, gender: 'enum:male,female', nationality: string, place_of_birth: string, birth_date: date, mobile_number: 'srting:15', emile: string, passport_number: 'string:25', passport_expiry_date: date, deleted_at: 'nullable timestamp' }
+    Ticket: { id: id, trip_id: 'id foreign:trips', type: 'enum:one_way,return', adults_number: 'int:3', children_number: 'int:3', passport_photo: string, visa_photo: 'nullable string', deleted_at: 'nullable timestamp', relationships: { hasMany: Passenger } }
+    Trip: { id: id, name: string, plane_id: 'id foreign:planes', from_airport_id: 'id foreign:airport', to_airport_id: 'id foreign:airport', take_off_at: time, landing_at: time, adults_price: double, children_price: 'nullable double', need_visa: boolean, deleted_at: 'nullable timestamp', relationships: { belongsToMany: 'Day,SeatType:seats', hasOne: Ticket } }

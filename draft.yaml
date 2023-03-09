@@ -1,0 +1,113 @@
+models:
+  Country:
+    id: id
+    name: string:20
+    deleted_at: nullable timestamp
+    relationships:
+      hasMany: Airport
+
+  Airport:
+    id: id
+    name: string:100
+    county_id: id foreign:counties
+    deleted_at: nullable timestamp
+    relationships:
+      hasMany: Trip
+
+  Day:
+    id: id
+    name: string:10
+    code: string 10
+    deleted_at: nullable timestamp
+    relationships:
+      belongsToMany: Trip
+
+  SeatType:
+    id: id
+    name: string:20
+    deleted_at: nullable timestamp
+    relationships:
+      belongsToMany: Plane,Trip:seats
+
+  Airline:
+    id: id
+    name: string
+    logo: nullable text
+    deleted_at: nullable timestamp
+    relationships:
+      hasMany: Plane
+
+  Plane:
+    id: id
+    name: string
+    photo: nullable text
+    airline_id: id foreign:airlines
+    deleted_at: nullable timestamp
+    relationships:
+      belongsToMany: SeatType
+      hasMany: Trip
+
+  Passenger:
+    id: id
+    ticket_id: id foreign:tickets
+    name: string
+    last_name: string
+    gender: enum:male,female
+    nationality: string
+    place_of_birth: string
+    birth_date: date
+    mobile_number: srting:15
+    emile: string
+    passport_number: string:25
+    passport_expiry_date: date
+    deleted_at: nullable timestamp
+
+  Ticket:
+    id: id
+    trip_id: id foreign:trips
+    type: enum:one_way,return
+    adults_number: int:3
+    children_number: int:3
+    passport_photo: string
+    visa_photo: nullable string
+    deleted_at: nullable timestamp
+    relationships:
+      hasMany: Passenger
+
+  Trip:
+    id: id
+    name: string
+    plane_id: id foreign:planes
+    from_airport_id: id foreign:airport
+    to_airport_id: id foreign:airport
+    take_off_at: time
+    landing_at: time
+    adults_price: double
+    children_price: nullable double
+    need_visa: boolean
+    deleted_at: nullable timestamp
+    relationships:
+      belongsToMany: Day,SeatType:seats
+      hasOne: Ticket
+
+seeders: Country,Airport,Day,SeatType,Airline,Plane,Passenger,Ticket,Trip
+
+controllers:
+  Country:
+    resource: web
+  Airport:
+    resource: web
+  Day:
+    resource: web
+  SeatType:
+    resource: web
+  Airline:
+    resource: web
+  Plane:
+    resource: web
+  Passenger:
+    resource: web
+  Ticket:
+    resource: web
+  Trip:
+    resource: web
