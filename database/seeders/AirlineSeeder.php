@@ -16,6 +16,7 @@ class AirlineSeeder extends Seeder
     {
         Airline::create([
             "name" => 'Medsky Airways',
+            "logo"=> 'medsky.png'
         ]);
     }
 }

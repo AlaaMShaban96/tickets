@@ -21,7 +21,7 @@
                                         <div class="flight-booking-content">
                                             <div class="flight-booking-airline">
                                                 <div class="flight-airline-img">
-                                                    <img src="assets/img/flight/airline-7.png" alt="">
+                                                    <img src="{{ asset($trip->airline_photo)}}" alt="">
                                                 </div>
                                                 <h5 class="flight-airline-name">{{ $trip->airline_name}}</h5>
                                             </div>
@@ -187,7 +187,7 @@
 
                     @endforelse
 
-                    <!-- pagination -->
+                    {{-- <!-- pagination -->
                     <div class="pagination-area">
                         <div aria-label="Page navigation example">
                             <ul class="pagination">
@@ -210,7 +210,7 @@
                             <p>Showing 1 - 6 of 24 Flights</p>
                         </div>
                     </div>
-                    <!-- pagination end -->
+                    <!-- pagination end --> --}}
 
                 </div>
             </div>

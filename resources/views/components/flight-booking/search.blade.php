@@ -36,10 +36,10 @@
                                                 <i class="fal fa-plane-departure"></i>
                                                 <select class="selectpicker" name="from" style="" data-show-subtext="true" data-live-search="true">
                                                     @foreach ($airports as $airport)
-                                                    <option selected  value="{{ $airport->id}}" data-subtext="{{ $airport->country->name }}">{{ $airport->name.','}}</option>
+                                                    <option  {{request()->get('from')== $airport->id?'selected':''}}  value="{{ $airport->id}}" data-subtext="{{ $airport->country->name }}">{{ $airport->name.','}}</option>
                                                     @endforeach
                                                  </select>
-
+                                                 <br>
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
@@ -48,11 +48,13 @@
                                                 </div>
                                                 <label>To</label>
                                                 <div class="form-group-icon">
+                                                    <i class="fal fa-plane-arrival"></i>
                                                     <select class="selectpicker" name="to" style="" data-show-subtext="true" data-live-search="true">
                                                     @foreach ($airports as $airport)
-                                                    <option   value="{{ $airport->id}}" data-subtext="{{ $airport->country->name }}">{{ $airport->name.','}}</option>
+                                                    <option {{request()->get('to')== $airport->id?'selected':''}}  value="{{ $airport->id}}" data-subtext="{{ $airport->country->name }}">{{ $airport->name.','}}</option>
                                                     @endforeach
                                                  </select>
+                                                 <br>
                                                 </div>
                                             </div>
                                         </div>
@@ -62,7 +64,7 @@
                                                     <div class="search-form-journey">
                                                         <label>Journey Date</label>
                                                         <div class="form-group-icon">
-                                                            <input type="text" name="journey_date"
+                                                            <input type="text" value="{{ request()->get('journey_date')}}" name="journey_date"
                                                                 class="form-control date-picker journey-date">
                                                             <i class="fal fa-calendar-days"></i>
                                                         </div>
@@ -86,12 +88,12 @@
                                                     <label>Passenger, Class</label>
                                                     <div class="form-group-icon">
                                                         <div class="passenger-total"><span
-                                                                class="passenger-total-amount">2</span>
+                                                                class="passenger-total-amount">{{ request()->get('adult')??1}}</span>
                                                             Passenger
                                                         </div>
                                                         <i class="fal fa-user-plus"></i>
                                                     </div>
-                                                    <p class="passenger-class-name">Business</p>
+                                                    <p class="passenger-class-name">Select Cabin Class</p>
                                                 </div>
                                                 <div class="dropdown-menu dropdown-menu-end">
                                                     <div class="dropdown-item">
@@ -104,7 +106,7 @@
                                                                 <button type="button" class="minus-btn"><i
                                                                         class="far fa-minus"></i></button>
                                                                 <input type="text" name="adult"
-                                                                    class="qty-amount passenger-adult" value="2"
+                                                                    class="qty-amount passenger-adult" value="{{ request()->get('adult')??1}}"
                                                                     readonly>
                                                                 <button type="button" class="plus-btn"><i
                                                                         class="far fa-plus"></i></button>
@@ -118,10 +120,10 @@
                                                                 <p>2-12 Years</p>
                                                             </div>
                                                             <div class="passenger-qty">
-                                                                <button type="button" class="minus-btn"><i
+                                                                <button type="button" class="minus-btn children"><i
                                                                         class="far fa-minus"></i></button>
                                                                 <input type="text" name="children"
-                                                                    class="qty-amount passenger-children" value="0"
+                                                                    class="qty-amount passenger-children" value="{{ request()->get('children')??0}}"
                                                                     readonly>
                                                                 <button type="button" class="plus-btn"><i
                                                                         class="far fa-plus"></i></button>
@@ -134,7 +136,7 @@
                                                         <div class="passenger-class-info">
                                                             @foreach ($seatTypes as $cabin)
                                                                 <div class="form-check">
-                                                                    <input class="form-check-input" type="radio"
+                                                                    <input class="form-check-input" {{request()->get('seat_types_id')== $cabin->id?'checked':''}} type="radio"
                                                                         value="{{ $cabin->id }}" name="seat_types_id"
                                                                         id="cabin-class1">
                                                                     <label class="form-check-label"

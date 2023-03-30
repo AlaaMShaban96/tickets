@@ -11,6 +11,9 @@
 
             background: none;
         }
+        .filter-option{
+            font-size: large;
+        }
     </style>
 @endsection
 @section('content')

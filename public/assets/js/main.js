@@ -26,7 +26,7 @@ Version         : 1.0
 
 
 
-    // data-background    
+    // data-background
     $(document).on('ready', function () {
         $("[data-background]").each(function () {
             $(this).css("background-image", "url(" + $(this).attr("data-background") + ")");
@@ -99,7 +99,7 @@ Version         : 1.0
         items: 1,
     });
 
-   
+
 
     // partner-slider
     $('.partner-slider').owlCarousel({
@@ -400,13 +400,13 @@ Version         : 1.0
     }
 
 
-    // search date picker 
+    // search date picker
     if ($('.date-picker').length) {
         $(".date-picker").datepicker();
     }
 
 
-    // find-car time picker 
+    // find-car time picker
     if ($('.time-picker').length) {
         $(function () {
             $(".time-picker").timepicker();
@@ -438,14 +438,27 @@ Version         : 1.0
     var journeyDate = new Date(),
         returnDate = new Date();
 
-    journeyDate.setDate(today.getDate() + 1);
+    journeyDate.setDate($(".journey-date").val());
     returnDate.setDate(today.getDate() + 2);
 
-    $(".journey-date").val(journeyDate.toLocaleDateString());
-    $(".return-date").val(returnDate.toLocaleDateString());
+    // this for set date in input when open page
+    var x = $(".journey-date").closest(".search-form-date").find(".journey-date").val();
+    var pcnx = $(".passenger-class-info input[type='radio']").closest(".form-check").find("input[type='radio']:checked").parent().text();
 
-    $(".journey-day-name").html(journeyDate.toLocaleString('en-us', { weekday: 'long' }));
-    $(".return-day-name").html(returnDate.toLocaleString('en-us', { weekday: 'long' }));
+    if (x !="") {
+        const journeyDayNamex = new Date(x).toLocaleString('en-us', { weekday: 'long' });
+        $(".journey-date").closest(".search-form-date").find(".journey-day-name").html(journeyDayNamex);
+    }
+    if (pcnx != "") {
+        $(".passenger-class-info input[type='radio']").closest(".passenger-box").find(".passenger-class-name").html(pcnx);
+    }
+
+
+    // $(".journey-date").val(journeyDate.toLocaleDateString());
+    // $(".return-date").val(returnDate.toLocaleDateString());
+
+    // $(".journey-day-name").html(journeyDate.toLocaleString('en-us', { weekday: 'long' }));
+    // $(".return-day-name").html(returnDate.toLocaleString('en-us', { weekday: 'long' }));
 
     $(".journey-date").change(function () {
         var ojd = $(this).closest(".search-form-date").find(".journey-date").val();
@@ -467,7 +480,7 @@ Version         : 1.0
     });
 
     $(".passenger-class-info input[type='radio']").change(function (e) {
-        var pcn = $(e.target).closest(".form-check").find("input[type='radio']:checked").val();
+        var pcn = $(e.target).closest(".form-check").find("input[type='radio']:checked").parent().text();
         $(e.target).closest(".passenger-box").find(".passenger-class-name").html(pcn);
     });
 
@@ -481,8 +494,9 @@ Version         : 1.0
     }),
         $(".minus-btn").on("click", function (e) {
             var i = $(this).closest(".passenger-qty").children(".qty-amount").get(0).value;
-
-            if (i <= 1) {
+            let j=$(this).hasClass("children")?0:1;
+            // console.log();
+            if (i <= j ) {
                 $(this).attr("disabled", "disabled");
             } else {
                 $(this).closest(".passenger-qty").children(".qty-amount").get(0).value--;
@@ -495,8 +509,9 @@ Version         : 1.0
         var pa = parseInt($(e.target).closest(".passenger-box").find(".passenger-adult").val());
         var pc = parseInt($(e.target).closest(".passenger-box").find(".passenger-children").val());
         var pi = parseInt($(e.target).closest(".passenger-box").find(".passenger-infant").val());
-        var tp = pa + pc + pi;
-        $(e.target).closest(".passenger-box").find(".passenger-total-amount").html(tp);
+        var tp = pa + pc ;
+        console.log(tp,pa,pc,pi);
+        $(e.target).closest(".passenger-box").find(".passenger-total-amount").text(tp);
     }
 
     function totalRoom(e) {
