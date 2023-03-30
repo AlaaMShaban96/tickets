@@ -5,23 +5,22 @@
             <div class="search-box flight-search">
                 <div class="search-form">
                     <form action="{{ route('tickets.search') }}">
-                        @csrf
                         <!-- flight type -->
                         <div class="flight-type">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" checked value="one-way" name="flight-type"
+                                <input class="form-check-input" type="radio" checked value="one_way" name="flight_type"
                                     id="flight-type1">
                                 <label class="form-check-label" for="flight-type1">
                                     One Way
                                 </label>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" value="round-way"
-                                    name="flight-type" id="flight-type2">
+                            {{-- <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" value="round_way"
+                                    name="flight_type" id="flight-type2">
                                 <label class="form-check-label" for="flight-type2">
                                     Round Way
                                 </label>
-                            </div>
+                            </div> --}}
                         </div>
                         <!-- flight type end -->
 
@@ -37,7 +36,7 @@
                                                 <i class="fal fa-plane-departure"></i>
                                                 <select class="selectpicker" name="from" style="" data-show-subtext="true" data-live-search="true">
                                                     @foreach ($airports as $airport)
-                                                    <option   value="{{ $airport->id}}" data-subtext="{{ $airport->country->name }}">{{ $airport->name.','}}</option>
+                                                    <option selected  value="{{ $airport->id}}" data-subtext="{{ $airport->country->name }}">{{ $airport->name.','}}</option>
                                                     @endforeach
                                                  </select>
 
@@ -63,7 +62,7 @@
                                                     <div class="search-form-journey">
                                                         <label>Journey Date</label>
                                                         <div class="form-group-icon">
-                                                            <input type="text" name="journey-date"
+                                                            <input type="text" name="journey_date"
                                                                 class="form-control date-picker journey-date">
                                                             <i class="fal fa-calendar-days"></i>
                                                         </div>
@@ -72,7 +71,7 @@
                                                     <div class="search-form-return">
                                                         <label>Return Date</label>
                                                         <div class="form-group-icon">
-                                                            <input type="text" name="return-date"
+                                                            <input type="text" name="return_date"
                                                                 class="form-control date-picker return-date">
                                                         </div>
                                                         <p class="return-day-name"></p>
@@ -136,7 +135,7 @@
                                                             @foreach ($seatTypes as $cabin)
                                                                 <div class="form-check">
                                                                     <input class="form-check-input" type="radio"
-                                                                        value="{{ $cabin->id }}" name="cabin-class"
+                                                                        value="{{ $cabin->id }}" name="seat_types_id"
                                                                         id="cabin-class1">
                                                                     <label class="form-check-label"
                                                                         for="cabin-class1">

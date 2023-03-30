@@ -85,6 +85,8 @@ models:
     adults_price: double
     children_price: nullable double
     need_visa: boolean
+    check_in: nullable time
+    tax: nullable double
     deleted_at: nullable timestamp
     relationships:
       belongsToMany: Day,SeatType:seats

@@ -24,6 +24,8 @@ class Trip extends Model
         'adults_price',
         'children_price',
         'need_visa',
+        'tax',
+        'check_in'
     ];
 
     /**

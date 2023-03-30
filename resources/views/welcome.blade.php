@@ -35,7 +35,7 @@
 
 
     <!-- flight booking -->
-    <x-flight-booking.list></x-flight-booking.list>
+    <x-flight-booking.list :trips="$trips" :numberOfadult="$numberOfadult" :numberOfChildren="$numberOfChildren"></x-flight-booking.list>
     <!-- flight booking end -->
 @endsection
 @section('script')
