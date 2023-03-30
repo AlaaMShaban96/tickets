@@ -115,7 +115,7 @@ updated:
 models:
     User: { name: 'string:191', email: 'string:191', email_verified_at: 'datetime nullable', password: 'string:191', remember_token: 'string:100 nullable' }
     Country: { id: id, name: 'string:20', deleted_at: 'nullable timestamp', relationships: { hasMany: Airport } }
-    Airport: { id: id, name: 'string:100', county_id: 'id foreign:counties', deleted_at: 'nullable timestamp', relationships: { hasMany: Trip } }
+    Airport: { id: id, name: 'string:100', country_id: 'id foreign:counties', deleted_at: 'nullable timestamp', relationships: { hasMany: Trip } }
     Day: { id: id, name: 'string:10', code: 'string 10', deleted_at: 'nullable timestamp', relationships: { belongsToMany: Trip } }
     SeatType: { id: id, name: 'string:20', deleted_at: 'nullable timestamp', relationships: { belongsToMany: 'Plane,Trip:seats' } }
     Airline: { id: id, name: string, logo: 'nullable text', deleted_at: 'nullable timestamp', relationships: { hasMany: Plane } }

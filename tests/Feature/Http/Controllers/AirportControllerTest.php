@@ -65,12 +65,12 @@ class AirportControllerTest extends TestCase
 
         $response = $this->post(route('airport.store'), [
             'name' => $name,
-            'county_id' => $county->id,
+            'country_id' => $county->id,
         ]);
 
         $airports = Airport::query()
             ->where('name', $name)
-            ->where('county_id', $county->id)
+            ->where('country_id', $county->id)
             ->get();
         $this->assertCount(1, $airports);
         $airport = $airports->first();
@@ -133,7 +133,7 @@ class AirportControllerTest extends TestCase
 
         $response = $this->put(route('airport.update', $airport), [
             'name' => $name,
-            'county_id' => $county->id,
+            'country_id' => $county->id,
         ]);
 
         $airport->refresh();
@@ -142,7 +142,7 @@ class AirportControllerTest extends TestCase
         $response->assertSessionHas('airport.id', $airport->id);
 
         $this->assertEquals($name, $airport->name);
-        $this->assertEquals($county->id, $airport->county_id);
+        $this->assertEquals($county->id, $airport->country_id);
     }
 
 

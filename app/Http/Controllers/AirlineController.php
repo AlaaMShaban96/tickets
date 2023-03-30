@@ -85,6 +85,6 @@ class AirlineController extends Controller
     {
         $airline->delete();
 
-        return redirect()->route('airline.index');
+         return redirect()->route('airline.index');
     }
 }

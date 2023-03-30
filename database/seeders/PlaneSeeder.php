@@ -15,7 +15,7 @@ class PlaneSeeder extends Seeder
     public function run()
     {
         Plane::create([
-            "name" => "airbus a321",
+            "name" => "Airbus a321",
             "airline_id" => 1,
         ]);
     }

@@ -25,7 +25,7 @@ class AirportFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'county_id' => County::factory(),
+            'country_id' => County::factory(),
             'deleted_at' => $this->faker->dateTime(),
         ];
     }

@@ -18,7 +18,7 @@ return new class extends Migration
         Schema::create('airports', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);
-            $table->foreignId('county_id')->constrained();
+            $table->foreignId('country_id')->constrained();
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });

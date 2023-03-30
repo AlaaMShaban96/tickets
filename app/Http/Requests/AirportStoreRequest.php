@@ -25,7 +25,7 @@ class AirportStoreRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:100'],
-            'county_id' => ['required', 'integer', 'exists:counties,id'],
+            'country_id' => ['required', 'integer', 'exists:counties,id'],
             'deleted_at' => ['nullable'],
         ];
     }

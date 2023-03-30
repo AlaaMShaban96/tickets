@@ -2,6 +2,8 @@
 
 namespace App\View\Components\FlightBooking;
 
+use App\Models\Airport;
+use App\Models\SeatType;
 use Illuminate\View\Component;
 
 class search extends Component
@@ -11,9 +13,11 @@ class search extends Component
      *
      * @return void
      */
+    public $seatTypes,$airports;
     public function __construct()
     {
-        //
+        $this->seatTypes=SeatType::all();
+        $this->airports= Airport::all();
     }
 
     /**

@@ -4,12 +4,13 @@
             <!-- flight search -->
             <div class="search-box flight-search">
                 <div class="search-form">
-                    <form action="#">
+                    <form action="{{ route('tickets.search') }}">
+                        @csrf
                         <!-- flight type -->
                         <div class="flight-type">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" checked value="one-way"
-                                    name="flight-type" id="flight-type1">
+                                <input class="form-check-input" type="radio" checked value="one-way" name="flight-type"
+                                    id="flight-type1">
                                 <label class="form-check-label" for="flight-type1">
                                     One Way
                                 </label>
@@ -19,13 +20,6 @@
                                     name="flight-type" id="flight-type2">
                                 <label class="form-check-label" for="flight-type2">
                                     Round Way
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" value="multi-city"
-                                    name="flight-type" id="flight-type3">
-                                <label class="form-check-label" for="flight-type3">
-                                    Multi City
                                 </label>
                             </div>
                         </div>
@@ -40,13 +34,13 @@
                                         <div class="col-lg-3">
                                             <div class="form-group">
                                                 <label>From</label>
-                                                <div class="form-group-icon">
-                                                    <input type="text" name="from-destination"
-                                                        class="form-control swap-from" value="New York">
-                                                    <i class="fal fa-plane-departure"></i>
-                                                </div>
-                                                <p>JFK - John F. Kennedy International Airport
-                                                </p>
+                                                <i class="fal fa-plane-departure"></i>
+                                                <select class="selectpicker" name="from" style="" data-show-subtext="true" data-live-search="true">
+                                                    @foreach ($airports as $airport)
+                                                    <option   value="{{ $airport->id}}" data-subtext="{{ $airport->country->name }}">{{ $airport->name.','}}</option>
+                                                    @endforeach
+                                                 </select>
+
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
@@ -55,11 +49,12 @@
                                                 </div>
                                                 <label>To</label>
                                                 <div class="form-group-icon">
-                                                    <input type="text" name="to-destination"
-                                                        class="form-control swap-to" value="Los Angeles">
-                                                    <i class="fal fa-plane-arrival"></i>
+                                                    <select class="selectpicker" name="to" style="" data-show-subtext="true" data-live-search="true">
+                                                    @foreach ($airports as $airport)
+                                                    <option   value="{{ $airport->id}}" data-subtext="{{ $airport->country->name }}">{{ $airport->name.','}}</option>
+                                                    @endforeach
+                                                 </select>
                                                 </div>
-                                                <p>LAX - Los Angeles International Airport</p>
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
@@ -127,60 +122,30 @@
                                                                 <button type="button" class="minus-btn"><i
                                                                         class="far fa-minus"></i></button>
                                                                 <input type="text" name="children"
-                                                                    class="qty-amount passenger-children"
-                                                                    value="0" readonly>
+                                                                    class="qty-amount passenger-children" value="0"
+                                                                    readonly>
                                                                 <button type="button" class="plus-btn"><i
                                                                         class="far fa-plus"></i></button>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="dropdown-item">
-                                                        <div class="passenger-item">
-                                                            <div class="passenger-info">
-                                                                <h6>Infant</h6>
-                                                                <p>Below 2 Years</p>
-                                                            </div>
-                                                            <div class="passenger-qty">
-                                                                <button type="button" class="minus-btn"><i
-                                                                        class="far fa-minus"></i></button>
-                                                                <input type="text" name="infant"
-                                                                    class="qty-amount passenger-infant"
-                                                                    value="0" readonly>
-                                                                <button type="button" class="plus-btn"><i
-                                                                        class="far fa-plus"></i></button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+
                                                     <div class="dropdown-item">
                                                         <h6 class="mb-3 mt-2">Cabin Class</h6>
                                                         <div class="passenger-class-info">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="radio"
-                                                                    value="Economy" name="cabin-class"
-                                                                    id="cabin-class1">
-                                                                <label class="form-check-label"
-                                                                    for="cabin-class1">
-                                                                    Economy
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" checked
-                                                                    type="radio" value="Business"
-                                                                    name="cabin-class" id="cabin-class2">
-                                                                <label class="form-check-label"
-                                                                    for="cabin-class2">
-                                                                    Business
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="radio"
-                                                                    value="First Class" name="cabin-class"
-                                                                    id="cabin-class3">
-                                                                <label class="form-check-label"
-                                                                    for="cabin-class3">
-                                                                    First Class
-                                                                </label>
-                                                            </div>
+                                                            @foreach ($seatTypes as $cabin)
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio"
+                                                                        value="{{ $cabin->id }}" name="cabin-class"
+                                                                        id="cabin-class1">
+                                                                    <label class="form-check-label"
+                                                                        for="cabin-class1">
+                                                                        {{ $cabin->name }}
+                                                                    </label>
+                                                                </div>
+                                                            @endforeach
+
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -190,7 +155,7 @@
                                 </div>
                                 <!-- flight search content end -->
 
-                                <!-- flight-multicity-item -->
+                                {{-- <!-- flight-multicity-item -->
                                 <div class="flight-search-item flight-multicity-item have-to-clone">
                                     <div class="row">
                                         <div class="col-lg-3">
@@ -243,11 +208,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- flight multicity end -->
+                                <!-- flight multicity end --> --}}
                             </div>
                             <div class="search-btn">
-                                <button type="submit" class="theme-btn"><span
-                                        class="far fa-search"></span>Update Search</button>
+                                <button type="submit" class="theme-btn"><span class="far fa-search"></span>Update
+                                    Search</button>
                             </div>
                         </div>
                         <!-- flight search wrapper end -->

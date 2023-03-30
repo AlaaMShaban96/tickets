@@ -15,8 +15,8 @@ class AirportSeeder extends Seeder
     public function run()
     {
         Airport::insert([
-            ["name" => "معيتيقه", "county_id" => 1],
-            ["name" => "مالطا", "county_id" => 2],
+            ["name" => "Mitiga  airport", "country_id" => 1],
+            ["name" => "Malta  airport", "country_id" => 2],
         ]);
     }
 }

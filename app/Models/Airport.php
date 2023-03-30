@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Trip;
+use App\Models\Country;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Airport extends Model
 {
@@ -16,7 +18,7 @@ class Airport extends Model
      */
     protected $fillable = [
         'name',
-        'county_id',
+        'country_id',
     ];
 
     /**
@@ -26,7 +28,7 @@ class Airport extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'county_id' => 'integer',
+        'country_id' => 'integer',
         'deleted_at' => 'timestamp',
     ];
 
@@ -35,8 +37,8 @@ class Airport extends Model
         return $this->hasMany(Trip::class);
     }
 
-    public function county()
+    public function country()
     {
-        return $this->belongsTo(County::class);
+        return $this->belongsTo(Country::class);
     }
 }

@@ -9,7 +9,7 @@ models:
   Airport:
     id: id
     name: string:100
-    county_id: id foreign:counties
+    country_id: id foreign:counties
     deleted_at: nullable timestamp
     relationships:
       hasMany: Trip

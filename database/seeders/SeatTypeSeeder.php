@@ -16,8 +16,8 @@ class SeatTypeSeeder extends Seeder
     public function run()
     {
         SeatType::insert([
-            ["name" => "economy"],
-            ["name" => "business class"],
+            ["name" => "Economy"],
+            ["name" => "Business class"],
         ]);
 
         DB::table('plane_seat_type')->insert([
