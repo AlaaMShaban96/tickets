@@ -72,5 +72,21 @@
     dselect(nationality, {
         search: true
     });
+
+    $(".passport_expiry_date").change(function (e) {
+        var passport_expiry_date = $(this).val();
+        console.log(passport_expiry_date);
+        let increaseDate = new Date();
+        let tody = new Date().toISOString().slice(0, 10);;
+        let no_of_months = 3;
+        increaseDate.setMonth(increaseDate.getMonth() + 6);
+        increaseDate= increaseDate.toISOString().slice(0, 10);
+        console.log(increaseDate > passport_expiry_date , increaseDate > tody);
+        if (increaseDate > passport_expiry_date && increaseDate > tody) {
+            $("#passport_expiry_date").val("");
+            alert("you need to renew your passport");
+        }
+
+    });
     </script>
 @endsection

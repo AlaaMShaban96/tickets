@@ -279,7 +279,7 @@
                 <div class="form-group">
                     <label>Passport expiry date</label>
                     <div class="form-group-icon">
-                        <input required type="date" name="passengers[{{ $i }}][passport_expiry_date]"  class="form-control  passport_expiry_date" placeholder="Passport expiry date">
+                        <input required type="date" id="passport_expiry_date" name="passengers[{{ $i }}][passport_expiry_date]"  class="form-control  passport_expiry_date" placeholder="Passport expiry date">
                         <i class="fa-duotone fa-alarm-clock"></i>
                     </div>
                 </div>
