@@ -54,7 +54,6 @@ models:
     last_name: string
     gender: enum:male,female
     nationality: string
-    place_of_birth: string
     birth_date: date
     mobile_number: srting:15
     email: string

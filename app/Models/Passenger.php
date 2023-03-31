@@ -20,7 +20,6 @@ class Passenger extends Model
         'last_name',
         'gender',
         'nationality',
-        'place_of_birth',
         'birth_date',
         'mobile_number',
         'email',

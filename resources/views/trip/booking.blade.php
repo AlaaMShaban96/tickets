@@ -63,3 +63,14 @@
         <!-- activity booking end -->
     </form>
 @endsection
+@section("script")
+<script>
+
+    var nationality = document.querySelector('#nationality');
+    var to = document.querySelector('#to');
+
+    dselect(nationality, {
+        search: true
+    });
+    </script>
+@endsection
