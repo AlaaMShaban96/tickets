@@ -50,8 +50,60 @@
     dselect(to, {
         search: true
     });
+    var availableDates = [];
+
+    $( function() {
+
+        function available(date) {
+            dmy = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear();
+            if ($.inArray(dmy, availableDates) != -1) {
+                return [true, "","Available"];
+            } else {
+                return [false,"","unAvailable"];
+            }
+        }
+    $( "#datepicker" ).datepicker({ minDate:  new Date(),beforeShowDay: available});
+  } );
+
+    $("#to").change(function () {
+        var from = $("#from").val();
+
+        var to = $("#to").val();
+        if (from !="" && to !="") {
+            $.ajax({
+
+                type:'POST',
+
+                url:"{{ route('trips.get_available_days') }}",
+
+                data:{from:from, to:to},
+
+                success:function(data){
+
+                    availableDates=data;
+                    function available(date) {
+                        dmy = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear();
+                        // console.log(dmy+' : '+($.inArray(dmy, availableDates)));
+                        if ($.inArray(dmy, availableDates) != -1) {
+                            return [true, "","Available"];
+                        } else {
+                            return [false,"","unAvailable"];
+                        }
+                    }
+                $( "#datepicker" ).datepicker({ minDate:  new Date(),beforeShowDay: available});
+
+                    console.log(data);
+
+                }
+
+                });
+        }
+
+    });
+
+
+
+
 </script>
-    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script> --}}
+
 @endsection

@@ -64,5 +64,53 @@ class DashboardController extends Controller
         // dd($request->all(),$trips,($fromDateNumber->dayOfWeek),$request->seat_types_id);
         return view('welcome',compact('trips','numberOfadult','numberOfChildren'));
     }
+    public function getDates(Request $request)
+    {
+        $nowDate = Carbon::now();
+
+        $numberOfadult=$request->adult??1;
+        $numberOfChildren= $request->children??0;
+        $passengersNumber=$numberOfadult+$numberOfChildren;
+
+        $days=DB::table("days")
+            ->select('days.*')
+            ->join('day_trip', 'days.id', '=', 'day_trip.day_id')
+            ->join('trips', 'day_trip.trip_id', '=', 'trips.id')
+            ->join('seats', 'trips.id', '=', 'seats.trip_id')
+            ->join('seat_types', 'seats.seat_type_id', '=', 'seat_types.id')
+            ->where('seats.available','>=',$passengersNumber)
+            ->where('from_airport_id',$request->from)
+            ->where('to_airport_id',$request->to)
+            ->get();
+
+            $dates= $this->getAvailableDays($days->unique('id'));
+
+            return response()->json($dates, 200);
+    }
+    //TODO : return available days for trip
+    public function getAvailableDays($days  , int $appointment_for=30) : array
+    {
+        // Get the now date
+        $now = Carbon::now();
+        $fromDate = new Carbon($now->toDateString());
+        // add clinic's days
+        $toDate = new Carbon($now->addDays($appointment_for)->toDateString());
+
+        foreach ($days as  $day) {
+            // Get the first day in the date range
+            $date = $fromDate->dayOfWeek == $day->code
+            ? $fromDate
+            : $fromDate->copy()->modify('next  '. $day->name);
+            // Iterate until you have reached the end date adding a week each time | carbon (lt) function to compare  btween dates
+            while ($date->lt($toDate)) {
+                // check day is canceled or not
+                $dates[] = $date->format('j-n-Y');
+                $date->addWeek();
+            }
+
+        }
+        return (array)$dates;
+
+    }
 
 }

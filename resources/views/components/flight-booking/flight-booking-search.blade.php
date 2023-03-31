@@ -35,6 +35,7 @@
                                                 <label>From</label>
                                                 <i class="fal fa-plane-departure"></i>
                                                 <select class="form-select" name="from" id="from" >
+                                                    <option value="" > select</option>
                                                     @foreach ($airports as $airport)
                                                     <option class="form-option" {{request()->get('from')== $airport->id?'selected':''}}  value="{{ $airport->id}}" >{{ $airport->name}} , {{ $airport->country->name }}</option>
                                                     @endforeach
@@ -50,6 +51,7 @@
                                                 <div class="form-group-icon">
                                                     <i class="fal fa-plane-arrival"></i>
                                                     <select class="form-select" name="to" id="to">
+                                                        <option value="" > select</option>
                                                     @foreach ($airports as $airport)
                                                         <option {{request()->get('to')== $airport->id?'selected':''}}  value="{{ $airport->id}}" >{{ $airport->name}} , {{ $airport->country->name }}</option>
                                                     @endforeach
@@ -64,8 +66,8 @@
                                                     <div class="search-form-journey">
                                                         <label>Journey Date</label>
                                                         <div class="form-group-icon">
-                                                            <input type="text" value="{{ request()->get('journey_date')??now()->format("Y-m-d")}}" name="journey_date"
-                                                                class="form-control date-picker journey-date">
+                                                            <input type="text" id="datepicker" value="{{ request()->get('journey_date')??now()->format("Y-m-d")}}"  name="journey_date"
+                                                                class="form-control  journey-date">
                                                             <i class="fal fa-calendar-days"></i>
                                                         </div>
                                                         <p class="journey-day-name"></p>

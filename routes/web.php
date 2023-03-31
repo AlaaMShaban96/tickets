@@ -1,5 +1,8 @@
 <?php
 
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,11 +15,17 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
  */
-// Route::get('/', function () {
-//     return view('welcome');
+// Route::get('/test', function (Request $request) {
+
+// // dd();
+
+
+//             dd($days->unique('id'),$x);
 // });
 
+
 Route::get('/', [App\Http\Controllers\DashboardController::class,'index'])->name("trips.search");
+Route::post('/get-available-days', [App\Http\Controllers\DashboardController::class,'getDates'])->name("trips.get_available_days");
 
 Route::resource('countries', App\Http\Controllers\CountryController::class);
 

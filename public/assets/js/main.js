@@ -8,7 +8,15 @@ Version         : 1.0
 
 (function ($) {
     "use strict";
+    $.ajaxSetup({
 
+        headers: {
+
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+
+        }
+
+    });
 
     // multi level dropdown menu
     $('.dropdown-menu a.dropdown-toggle').on('click', function (e) {
@@ -402,7 +410,7 @@ Version         : 1.0
 
     // search date picker
     if ($('.date-picker').length) {
-        $(".date-picker").datepicker();
+        $(".date-picker").datepicker().datepicker("setDate", new Date());;
     }
 
 
@@ -457,6 +465,8 @@ Version         : 1.0
     // $(".journey-date").val(journeyDate.toLocaleDateString());
     // $(".return-date").val(returnDate.toLocaleDateString());
 
+
+
     // $(".journey-day-name").html(journeyDate.toLocaleString('en-us', { weekday: 'long' }));
     // $(".return-day-name").html(returnDate.toLocaleString('en-us', { weekday: 'long' }));
 
@@ -510,7 +520,7 @@ Version         : 1.0
         var pc = parseInt($(e.target).closest(".passenger-box").find(".passenger-children").val());
         var pi = parseInt($(e.target).closest(".passenger-box").find(".passenger-infant").val());
         var tp = pa + pc ;
-        console.log(tp,pa,pc,pi);
+        // console.log(tp,pa,pc,pi);
         $(e.target).closest(".passenger-box").find(".passenger-total-amount").text(tp);
     }
 
