@@ -1,5 +1,5 @@
 <footer class="footer-area">
-    <div class="footer-widget">
+    {{-- <div class="footer-widget">
         <div class="container">
             <div class="row footer-widget-wrapper pt-100 pb-70">
                 <div class="col-md-6 col-lg-3">
@@ -106,21 +106,20 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <div class="copyright">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 align-self-center">
                     <p class="copyright-text">
-                        &copy; Copyright <span id="date"></span> <a href="#"> MyTrip </a> All Rights Reserved.
+                        &copy; Copyright <span id="date"></span> <a href="https://www.eurolibya.com/"> eurolibya </a> All Rights Reserved.
                     </p>
                 </div>
                 <div class="col-md-6 align-self-center">
                     <ul class="footer-social">
-                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                        <li><a href="https://www.facebook.com/LibyaEuro"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://twitter.com/eurolibya"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="https://www.linkedin.com/company/eurolibya/"><i class="fab fa-linkedin-in"></i></a></li>
                     </ul>
                 </div>
             </div>

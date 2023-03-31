@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- breadcrumb -->
-    <div class="site-breadcrumb" style="background: url(assets/img/breadcrumb/06.jpg)">
+    <div class="site-breadcrumb" style="background: url({{ asset("summar.png")}})">
         <div class="container">
             <h2 class="breadcrumb-title">{{ $trip->fromAirport->name }} - {{ $trip->toAirport->name }} </h2>
             <ul class="breadcrumb-menu">

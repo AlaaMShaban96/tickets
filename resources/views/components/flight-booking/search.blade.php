@@ -34,9 +34,9 @@
                                             <div class="form-group">
                                                 <label>From</label>
                                                 <i class="fal fa-plane-departure"></i>
-                                                <select class="selectpicker" name="from" style="" data-show-subtext="true" data-live-search="true">
+                                                <select class="form-select" name="from" id="from" >
                                                     @foreach ($airports as $airport)
-                                                    <option  {{request()->get('from')== $airport->id?'selected':''}}  value="{{ $airport->id}}" data-subtext="{{ $airport->country->name }}">{{ $airport->name.','}}</option>
+                                                    <option class="form-option" {{request()->get('from')== $airport->id?'selected':''}}  value="{{ $airport->id}}" >{{ $airport->name}} , {{ $airport->country->name }}</option>
                                                     @endforeach
                                                  </select>
                                                  <br>
@@ -49,9 +49,9 @@
                                                 <label>To</label>
                                                 <div class="form-group-icon">
                                                     <i class="fal fa-plane-arrival"></i>
-                                                    <select class="selectpicker" name="to" style="" data-show-subtext="true" data-live-search="true">
+                                                    <select class="form-select" name="to" id="to">
                                                     @foreach ($airports as $airport)
-                                                    <option {{request()->get('to')== $airport->id?'selected':''}}  value="{{ $airport->id}}" data-subtext="{{ $airport->country->name }}">{{ $airport->name.','}}</option>
+                                                        <option {{request()->get('to')== $airport->id?'selected':''}}  value="{{ $airport->id}}" >{{ $airport->name}} , {{ $airport->country->name }}</option>
                                                     @endforeach
                                                  </select>
                                                  <br>
@@ -64,7 +64,7 @@
                                                     <div class="search-form-journey">
                                                         <label>Journey Date</label>
                                                         <div class="form-group-icon">
-                                                            <input type="text" value="{{ request()->get('journey_date')}}" name="journey_date"
+                                                            <input type="text" value="{{ request()->get('journey_date')??now()->format("Y-m-d")}}" name="journey_date"
                                                                 class="form-control date-picker journey-date">
                                                             <i class="fal fa-calendar-days"></i>
                                                         </div>
@@ -130,13 +130,13 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                     <div class="dropdown-item">
                                                         <h6 class="mb-3 mt-2">Cabin Class</h6>
                                                         <div class="passenger-class-info">
-                                                            @foreach ($seatTypes as $cabin)
+                                                            @foreach ($seatTypes as $key => $cabin)
+
                                                                 <div class="form-check">
-                                                                    <input class="form-check-input" {{request()->get('seat_types_id')== $cabin->id?'checked':''}} type="radio"
+                                                                    <input class="form-check-input" {{request()->get('seat_types_id')== $cabin->id ||( request()->get('seat_types_id')==null && $key == 0) ?'checked':''}} type="radio"
                                                                         value="{{ $cabin->id }}" name="seat_types_id"
                                                                         id="cabin-class1">
                                                                     <label class="form-check-label"
