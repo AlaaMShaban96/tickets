@@ -6,7 +6,7 @@ use App\Models\Airport;
 use App\Models\SeatType;
 use Illuminate\View\Component;
 
-class search extends Component
+class Search extends Component
 {
     /**
      * Create a new component instance.
