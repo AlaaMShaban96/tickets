@@ -7,7 +7,7 @@
                 <div class="form-group">
                     <label>First Name</label>
                     <div class="form-group-icon">
-                        <input required type="text" name="passengers[{{ $i }}][name]" value="{{ request()->get('passengers.*.name')??''}}"  class="form-control" placeholder="First Name">
+                        <input required type="text" name="passengers[{{ $i }}][name]" value="{{ request()->get('passengers.'.$i.'.name')??''}}"  class="form-control" placeholder="First Name">
                         <i class="far fa-user"></i>
                     </div>
                 </div>

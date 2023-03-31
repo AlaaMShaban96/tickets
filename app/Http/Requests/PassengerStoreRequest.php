@@ -29,7 +29,6 @@ class PassengerStoreRequest extends FormRequest
             'last_name' => ['required', 'string'],
             'gender' => ['required', 'in:male,female'],
             'nationality' => ['required', 'string'],
-            'place_of_birth' => ['required', 'string'],
             'birth_date' => ['required', 'date'],
             'mobile_number' => ['required', 'string'],
             'emile' => ['required', 'string'],

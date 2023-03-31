@@ -35,7 +35,6 @@ class TicketStoreRequest extends FormRequest
             'passengers.*.email' => ['required'],
             'passengers.*.mobile_number' => ['required'],
             'passengers.*.nationality' => ['required'],
-            'passengers.*.place_of_birth' => ['required'],
             'passengers.*.birth_date' => ['required'],
             'passengers.*.passport_number' => ['required'],
             'passengers.*.passport_expiry_date' => ['required'],
