@@ -6,7 +6,7 @@ use App\Models\Airport;
 use App\Models\SeatType;
 use Illuminate\View\Component;
 
-class Search extends Component
+class FlightBookingSearch extends Component
 {
     /**
      * Create a new component instance.
@@ -27,6 +27,6 @@ class Search extends Component
      */
     public function render()
     {
-        return view('components.flight-booking.search');
+        return view('components.flight-booking.flight-booking-search');
     }
 }

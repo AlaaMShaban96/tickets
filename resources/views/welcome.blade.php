@@ -22,14 +22,14 @@
     <div class="site-breadcrumb" style="background: url({{ asset('cover_eurolibya.jpg')}})">
         <div class="container">
             <h2 class="breadcrumb-title">All World in your hand</h2>
-            
+
         </div>
     </div>
 
 
 
     <!-- search area -->
-    <x-flight-booking.search></x-flight-booking.search>
+    <x-flight-booking.flight-booking-search></x-flight-booking.flight-booking-search>
     <!-- search area end -->
 
 
