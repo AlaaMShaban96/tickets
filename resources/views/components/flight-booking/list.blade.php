@@ -59,7 +59,7 @@
                                             {{-- <del class="discount-price">$5,548</del> --}}
                                             <span class="price-amount">${{$trip->adults + $trip->children}}</span>
                                         </div>
-                                        <a href="#" class="theme-btn">Book Now<i
+                                        <a href="{{ route("trips.booking",['trip'=>$trip->id,'seat_types_id'=>request()->get('seat_types_id'),'journey_date'=>request()->get('journey_date'),'numberOfAdult'=> $numberOfadult,'numberOfChildren'=>$numberOfChildren])}}" class="theme-btn">Book Now<i
                                                 class="far fa-arrow-right"></i></a>
                                     </div>
                                 </div>

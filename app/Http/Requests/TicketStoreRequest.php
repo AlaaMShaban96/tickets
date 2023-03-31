@@ -26,11 +26,20 @@ class TicketStoreRequest extends FormRequest
         return [
             'trip_id' => ['required', 'integer', 'exists:trips,id'],
             'type' => ['required', 'in:one_way,return'],
-            'adults_number' => ['required', 'string'],
-            'children_number' => ['required', 'string'],
-            'passport_photo' => ['required', 'string'],
-            'visa_photo' => ['nullable', 'string'],
-            'deleted_at' => ['nullable'],
+            'numberOfPassengers' => ['required'],
+            'numberOfChildren' => ['required'],
+            'journey_date' => ['required'],
+            'numberOfAdult' => ['required'],
+            'passengers.*.name' => ['required'],
+            'passengers.*.last_name' => ['required'],
+            'passengers.*.email' => ['required'],
+            'passengers.*.mobile_number' => ['required'],
+            'passengers.*.nationality' => ['required'],
+            'passengers.*.place_of_birth' => ['required'],
+            'passengers.*.birth_date' => ['required'],
+            'passengers.*.passport_number' => ['required'],
+            'passengers.*.passport_expiry_date' => ['required'],
+            'passengers.*.passport_photo' => ['required'],
         ];
     }
 }

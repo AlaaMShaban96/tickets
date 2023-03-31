@@ -57,19 +57,23 @@ models:
     place_of_birth: string
     birth_date: date
     mobile_number: srting:15
-    emile: string
+    email: string
     passport_number: string:25
     passport_expiry_date: date
+    passport_photo: string
+    visa_photo: nullable string
     deleted_at: nullable timestamp
 
   Ticket:
     id: id
     trip_id: id foreign:trips
+    seat_type_id: id foreign:seat_types
     type: enum:one_way,return
     adults_number: int:3
+    status: enum:0,1,2,3
+    journey_date: date
+    return_date: nullable date
     children_number: int:3
-    passport_photo: string
-    visa_photo: nullable string
     deleted_at: nullable timestamp
     relationships:
       hasMany: Passenger

@@ -16,23 +16,24 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', [App\Http\Controllers\DashboardController::class,'index'])->name("tickets.search");
+Route::get('/', [App\Http\Controllers\DashboardController::class,'index'])->name("trips.search");
 
-Route::resource('country', App\Http\Controllers\CountryController::class);
+Route::resource('countries', App\Http\Controllers\CountryController::class);
 
-Route::resource('airport', App\Http\Controllers\AirportController::class);
+Route::resource('airports', App\Http\Controllers\AirportController::class);
 
-Route::resource('day', App\Http\Controllers\DayController::class);
+Route::resource('days', App\Http\Controllers\DayController::class);
 
-Route::resource('seat-type', App\Http\Controllers\SeatTypeController::class);
+Route::resource('seat-types', App\Http\Controllers\SeatTypeController::class);
 
-Route::resource('airline', App\Http\Controllers\AirlineController::class);
+Route::resource('airlines', App\Http\Controllers\AirlineController::class);
 
-Route::resource('plane', App\Http\Controllers\PlaneController::class);
+Route::resource('planes', App\Http\Controllers\PlaneController::class);
 
-Route::resource('passenger', App\Http\Controllers\PassengerController::class);
+Route::resource('passengers', App\Http\Controllers\PassengerController::class);
 
-Route::resource('ticket', App\Http\Controllers\TicketController::class);
+Route::resource('tickets', App\Http\Controllers\TicketController::class);
+Route::get('/booking/{trip}', [App\Http\Controllers\TripController::class,'booking'])->name("trips.booking");
 
-Route::resource('trip', App\Http\Controllers\TripController::class);
+Route::resource('trips', App\Http\Controllers\TripController::class);
 

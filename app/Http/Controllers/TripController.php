@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Trip;
+use App\Models\SeatType;
+use Illuminate\Http\Request;
 use App\Http\Requests\TripStoreRequest;
 use App\Http\Requests\TripUpdateRequest;
-use App\Models\Trip;
-use Illuminate\Http\Request;
 
 class TripController extends Controller
 {
@@ -86,5 +87,17 @@ class TripController extends Controller
         $trip->delete();
 
         return redirect()->route('trip.index');
+    }
+    public function booking( Trip $trip ,Request $request)
+    {
+
+
+        $seatType=SeatType::find($request->seat_types_id);
+        $journey_date=$request->journey_date;
+        $numberOfChildren=$request->numberOfChildren;
+        $numberOfAdult=$request->numberOfAdult;
+        $numberOfPassengers=$numberOfAdult + $numberOfChildren;
+        // dd($numberOfPassengers,$numberOfAdult , $numberOfChildren);
+        return view("trip.booking",compact('trip','numberOfPassengers','numberOfChildren','numberOfAdult','seatType','journey_date'));
     }
 }

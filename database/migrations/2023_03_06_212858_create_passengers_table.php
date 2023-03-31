@@ -25,9 +25,11 @@ return new class extends Migration
             $table->string('place_of_birth');
             $table->date('birth_date');
             $table->string('mobile_number');
-            $table->string('emile');
+            $table->string('email');
             $table->string('passport_number', 25);
             $table->date('passport_expiry_date');
+            $table->string('passport_photo');
+            $table->string('visa_photo')->nullable();
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });

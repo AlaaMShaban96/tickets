@@ -4,7 +4,7 @@
             <!-- flight search -->
             <div class="search-box flight-search">
                 <div class="search-form">
-                    <form action="{{ route('tickets.search') }}">
+                    <form action="{{ route('trips.search') }}">
                         <!-- flight type -->
                         <div class="flight-type">
                             <div class="form-check form-check-inline">

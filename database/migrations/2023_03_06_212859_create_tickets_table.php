@@ -18,11 +18,13 @@ return new class extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
             $table->foreignId('trip_id')->constrained();
+            $table->foreignId('seat_type_id')->constrained();
             $table->enum('type', ["one_way","return"]);
+            $table->enum('status', [0,1,2,3])->default(0)->comment('0=>accept ,1 => done, 2 => reject , 3 => return');
             $table->string('adults_number');
             $table->string('children_number');
-            $table->string('passport_photo');
-            $table->string('visa_photo')->nullable();
+            $table->date('journey_date');
+            $table->date('return_date')->nullable();
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });

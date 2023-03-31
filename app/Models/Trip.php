@@ -2,8 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Day;
+use App\Models\Plane;
+use App\Models\Ticket;
+use App\Models\Airport;
+use App\Models\SeatType;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class Trip extends Model
 {
@@ -63,6 +69,8 @@ class Trip extends Model
     {
         return $this->belongsTo(Plane::class);
     }
+   
+
 
     public function fromAirport()
     {

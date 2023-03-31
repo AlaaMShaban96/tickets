@@ -23,9 +23,11 @@ class Passenger extends Model
         'place_of_birth',
         'birth_date',
         'mobile_number',
-        'emile',
+        'email',
         'passport_number',
         'passport_expiry_date',
+        'passport_photo',
+        'visa_photo'
     ];
 
     /**

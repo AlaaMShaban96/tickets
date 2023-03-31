@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\SeatType;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Ticket extends Model
 {
@@ -17,10 +18,11 @@ class Ticket extends Model
     protected $fillable = [
         'trip_id',
         'type',
+        'journey_date',
         'adults_number',
         'children_number',
-        'passport_photo',
-        'visa_photo',
+        'status',
+        'seat_type_id'
     ];
 
     /**
@@ -31,6 +33,7 @@ class Ticket extends Model
     protected $casts = [
         'id' => 'integer',
         'trip_id' => 'integer',
+        'seat_type_id' => 'integer',
         'deleted_at' => 'timestamp',
     ];
 
@@ -43,4 +46,9 @@ class Ticket extends Model
     {
         return $this->belongsTo(Trip::class);
     }
+    public function seatType()
+    {
+        return $this->belongsTo(SeatType::class);
+    }
+
 }
