@@ -21,8 +21,8 @@
         <li>Check In: <span> {{ $trip->check_in}}</span></li>
         <li>Duration: <span>1-4 Hours </span></li>
         <li>Cabin Class : <span>{{ $seatType->name }}</span></li>
-        <li>Adults: <span>{{ $numberOfAdult}}</span></li>
-        <li>Childs: <span>{{ $numberOfChildren }}</span></li>
+        <li>Adults: <span> {{ $numberOfAdult}}x{{ $trip->adults_price}}</span></li>
+        <li>Childs: <span>{{ $numberOfChildren }}x{{ $trip->children_price}}</span></li>
     </ul>
 </div>
 <div class="booking-order-info">

@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Ticket;
 use App\Models\Passenger;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\TicketStoreRequest;
 use App\Http\Requests\TicketUpdateRequest;
@@ -38,7 +39,6 @@ class TicketController extends Controller
      */
     public function store(TicketStoreRequest $request)
     {
-        // dd($request->all() ,isset($request->passengers[1]['']));
         // create ticket
         $ticket = Ticket::create([
             'trip_id'=>$request->trip_id,
@@ -59,7 +59,11 @@ class TicketController extends Controller
 
             Passenger::create($passenger);
         }
-
+        DB::table('users')
+        ->where('trip_id', $request->trip_id)  // find your user by their email
+        ->where('trip_id', $request->trip_id)  // find your user by their email
+        ->limit(1)  // optional - to ensure only one record is updated.
+        ->update(array('member_type' => $plan));  // update the record in the DB.
         $request->session()->flash('ticket.id', $ticket->id);
 
         return view('ticket.confirmed',compact('ticket'));
