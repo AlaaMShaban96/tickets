@@ -1,7 +1,7 @@
 <div class="col-md-12">
     <div class="activity-item">
         <div class="activity-img">
-            <img src="{{ asset($passenger->passport_photo)}}" alt="" style="width: 100%;height: 250px;">
+            <img src="{{ \Storage::disk('local')->url($passenger->passport_photo)}}" alt="" style="width: 100%;height: 250px;">
             <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
         </div>
         <div class="activity-content">

@@ -55,10 +55,10 @@ class TicketController extends Controller
                     foreach ($request->passengers as $key => $passenger) {
                         $passenger['ticket_id']=$ticket->id;
                         if (isset($passenger['passport_photo'])) {
-                            $passenger['passport_photo'] = Storage::disk('local')->put("storage/ticket/".$ticket->id."/passport/".$passenger['name'], $passenger['passport_photo']);
+                            $passenger['passport_photo'] = Storage::disk('local')->put("public/ticket/".$ticket->id."/passport/".$passenger['name'], $passenger['passport_photo']);
                         }
                         if (isset($passenger['visa_photo'])) {
-                            $passenger['visa_photo'] = Storage::disk('local')->put("storage/ticket/".$ticket->id."/visa/".$passenger['name'], $passenger['visa_photo']);
+                            $passenger['visa_photo'] = Storage::disk('local')->put("public/ticket/".$ticket->id."/visa/".$passenger['name'], $passenger['visa_photo']);
                         }
                         Passenger::create($passenger);
                     }
