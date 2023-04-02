@@ -31,14 +31,17 @@ Route::post('/login',[App\Http\Controllers\AuthController::class,'login'])->name
 Route::get('/', [App\Http\Controllers\DashboardController::class,'index'])->name("trips.search");
 Route::post('/get-available-days', [App\Http\Controllers\DashboardController::class,'getDates'])->name("trips.get_available_days");
 Route::get('/booking/{trip}', [App\Http\Controllers\TripController::class,'booking'])->name("trips.booking");
+Route::post('/tickets', [App\Http\Controllers\TicketController::class,'store'])->name("tickets.store");
 
 Route::group(['middleware' => ['auth']], function () {
+
     Route::get('/logout',[App\Http\Controllers\AuthController::class,'logout'])->name('logout');
 
     Route::get('/passengers/{ticket}/list', [App\Http\Controllers\PassengerController::class,'list'])->name("passengers.list");
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class,'dashboard'])->name("dashboard.index");
     Route::get('/tickets/{ticket}/chenge_status', [App\Http\Controllers\TicketController::class,'chengeStatus'])->name("tickets.chenge_status");
-    Route::resource('tickets', App\Http\Controllers\TicketController::class);
+
+    // Route::resource('tickets', App\Http\Controllers\TicketController::class);
 
     Route::resource('countries', App\Http\Controllers\CountryController::class);
 
