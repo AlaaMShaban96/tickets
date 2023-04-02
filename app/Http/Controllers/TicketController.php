@@ -42,7 +42,7 @@ class TicketController extends Controller
     public function store(TicketStoreRequest $request)
     {
         try {
-            DB::transaction(function () use ($request) {
+            DB::beginTransaction();
                     // create ticket
                     $ticket = Ticket::create([
                         'trip_id'=>$request->trip_id,
@@ -65,8 +65,9 @@ class TicketController extends Controller
 
 
                     $request->session()->flash('ticket.id', $ticket->id);
-            });
+            DB::commit();
         } catch (\Throwable $th) {
+            DB::rollback();
             Alert::toast('system error', 'error')->position('top-end')->autoClose(5000);
             return redirect()->back()->withInput();
         }
