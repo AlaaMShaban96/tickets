@@ -53,34 +53,11 @@ class DashboardController extends Controller
             ->join('day_trip', 'trips.id', '=', 'day_trip.trip_id') // this for get days of trip available
             ->join('plane_seat_type', 'planes.id', '=', 'plane_seat_type.plane_id')
             ->join('seat_types', 'plane_seat_type.seat_type_id', '=', 'seat_types.id')
-            // ->leftJoin('bookings', 'trips.id', '=', 'bookings.trip_id')
-            // ->join('bookings', 'trips.id', '=', 'bookings.trip_id')
+            ->where('trips.available',true)
             ->where('seat_types.id',$request->seat_types_id)
-
-
             ->where('day_trip.day_id',($fromDateNumber->dayOfWeek+1))
             ->where('from_airport_id',$request->from)
             ->where('to_airport_id',$request->to)
-            // ->where(function($query) use ($request, $passengersNumber)
-            // {
-            //     // $query
-            //     $query
-            //     ->whereNull('bookings.date') // if dont
-            //     // ->whereNotNull('bookings.date') // if dont
-
-
-            //     ->orWhere(function($query) use ($request, $passengersNumber)
-            //     {
-            //         $query
-                    // ->whereNotNull('bookings.date')
-                    // ->Where('plane_seat_type.number','>=','bookings.available')
-                    // ->where('bookings.available','<=',$passengersNumber)
-                //     ;
-
-                // });
-
-
-            // })
             ->get();
         }
 
@@ -99,13 +76,11 @@ class DashboardController extends Controller
             ->select('days.*')
             ->join('day_trip', 'days.id', '=', 'day_trip.day_id')
             ->join('trips', 'day_trip.trip_id', '=', 'trips.id')
-            ->join('seats', 'trips.id', '=', 'seats.trip_id')
-            ->join('seat_types', 'seats.seat_type_id', '=', 'seat_types.id')
             ->where('from_airport_id',$request->from)
             ->where('to_airport_id',$request->to)
             ->get();
-
             $dates= $this->getAvailableDays($days->unique('id'));
+            // dd($dates);
 
             return response()->json($dates, 200);
     }
