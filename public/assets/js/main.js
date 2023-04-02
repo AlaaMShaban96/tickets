@@ -569,10 +569,20 @@ Version         : 1.0
 
     // swap search form value
     $(document).on('click', '.flight-search-item .search-form-swap', function (e) {
-        var swapFrom = $(e.target).closest(".flight-search-item").find('.swap-from').val();
-        var swapTo = $(e.target).closest(".flight-search-item").find('.swap-to').val();
-        $(e.target).closest(".flight-search-item").find('.swap-from').val(swapTo);
-        $(e.target).closest(".flight-search-item").find('.swap-to').val(swapFrom);
+       let to= $("#to").val();
+       let from= $("#from").val();
+
+    //    $("#to").attr('selected', '');
+    //    $("#from").attr('selected', '');
+    //    $("#to").val(from).attr("selected","selected");
+    //    $("#from").val(to).attr("selected","selected");
+       $("#to").val(from).trigger("change");
+       $("#from").val(to).trigger("change");
+       console.log(to,from);
+        // var swapFrom = $(e.target).closest(".flight-search-item").find('.swap-from').val();
+        // var swapTo = $(e.target).closest(".flight-search-item").find('.swap-to').val();
+        // $(e.target).closest(".flight-search-item").find('.swap-from').val(swapTo);
+        // $(e.target).closest(".flight-search-item").find('.swap-to').val(swapFrom);
     });
 
 

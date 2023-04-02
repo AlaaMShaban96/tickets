@@ -3,14 +3,15 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Database\Seeders\DaySeeder;
+use Illuminate\Database\Seeder;
+use Database\Seeders\TripSeeder;
+use Database\Seeders\UserSeeder;
+use Database\Seeders\PlaneSeeder;
 use Database\Seeders\AirlineSeeder;
 use Database\Seeders\AirportSeeder;
 use Database\Seeders\CountrySeeder;
-use Database\Seeders\DaySeeder;
-use Database\Seeders\PlaneSeeder;
 use Database\Seeders\SeatTypeSeeder;
-use Database\Seeders\TripSeeder;
-use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -28,6 +29,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PlaneSeeder::class);
         $this->call(SeatTypeSeeder::class);
         $this->call(TripSeeder::class);
+        $this->call(UserSeeder::class);
 
         // \App\Models\User::factory(10)->create();
 

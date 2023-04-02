@@ -28,6 +28,8 @@ class TripSeeder extends Seeder
                 "children_price" => 195,
                 'tax' => 1.5,
                 "need_visa" => 1,
+                "poilcy"=>"Refund and Date Change are done as per the following policies, Refund Amount= Refund Charge (as per airline policy + ShareTrip Convenience Fee), Date Change Amount= Date Change Fee (as per Airline Policy + ShareTrip Convenience Fee).",
+
             ],
             [
                 "name" => "MT 23",
@@ -41,11 +43,12 @@ class TripSeeder extends Seeder
                 "children_price" => 195,
                 'tax' => 1.5,
                 "need_visa" => 1,
+                "poilcy"=>"Refund and Date Change are done as per the following policies, Refund Amount= Refund Charge (as per airline policy + ShareTrip Convenience Fee), Date Change Amount= Date Change Fee (as per Airline Policy + ShareTrip Convenience Fee).",
             ],
         ]);
         DB::table('seats')->insert([
-            ['number' => 10, "available" => 10, 'trip_id' => 1, "seat_type_id" => 2],
-            ['number' => 10, "available" => 30, 'trip_id' => 1, "seat_type_id" => 1],
+            ['number' => 10,  'trip_id' => 1, "seat_type_id" => 2],
+            ['number' => 10,  'trip_id' => 1, "seat_type_id" => 1],
         ]);
 
     }

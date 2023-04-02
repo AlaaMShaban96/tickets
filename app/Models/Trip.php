@@ -6,6 +6,7 @@ use App\Models\Day;
 use App\Models\Plane;
 use App\Models\Ticket;
 use App\Models\Airport;
+use App\Models\Booking;
 use App\Models\SeatType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -31,7 +32,8 @@ class Trip extends Model
         'children_price',
         'need_visa',
         'tax',
-        'check_in'
+        'check_in',
+        'poilcy'
     ];
 
     /**
@@ -69,8 +71,15 @@ class Trip extends Model
     {
         return $this->belongsTo(Plane::class);
     }
-   
-
+    /**
+     * Get all of the bookingd for the Trip
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function bookingd()
+    {
+        return $this->hasMany(Booking::class);
+    }
 
     public function fromAirport()
     {

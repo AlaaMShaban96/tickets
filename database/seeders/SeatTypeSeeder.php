@@ -21,8 +21,8 @@ class SeatTypeSeeder extends Seeder
         ]);
 
         DB::table('plane_seat_type')->insert([
-            ['number' => 10, 'plane_id' => 1, "seat_type_id" => 2],
-            ['number' => 30, 'plane_id' => 1, "seat_type_id" => 1],
+            ['number' => 1, 'plane_id' => 1, "seat_type_id" => 2],
+            ['number' => 1, 'plane_id' => 1, "seat_type_id" => 1],
         ]);
 
     }

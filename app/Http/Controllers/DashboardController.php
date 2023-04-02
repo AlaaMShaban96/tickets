@@ -22,6 +22,7 @@ class DashboardController extends Controller
             ->select(
                 'trips.id',
                 'trips.name',
+                'trips.poilcy',
                 'trips.take_off_at',
                 'trips.landing_at',
                 DB::raw('TIMEDIFF(trips.landing_at ,trips.take_off_at ) as trip_time'),
@@ -44,20 +45,41 @@ class DashboardController extends Controller
                 DB::raw("(trips.adults_price * $numberOfadult) + (trips.tax  * $numberOfadult )  as adults"),
                 DB::raw("(trips.children_price * $numberOfChildren )  + (trips.tax  * $numberOfChildren ) as children")
             )
-            ->join('airports as airport_from', 'trips.from_airport_id', '=', 'airport_from.id')
-            ->join('airports as airport_to', 'trips.to_airport_id', '=', 'airport_to.id')
-            ->join('planes', 'trips.plane_id', '=', 'planes.id')
+            ->join('airports as airport_from', 'trips.from_airport_id', '=', 'airport_from.id')// this for retrive data for airport_from
+            ->join('airports as airport_to', 'trips.to_airport_id', '=', 'airport_to.id')// this for retrive data for airport_to
+            ->join('planes', 'trips.plane_id', '=', 'planes.id')// this for get name of plane and seat_types
             ->join('airlines', 'planes.airline_id', '=', 'airlines.id')
-            ->join('day_trip', 'trips.id', '=', 'day_trip.trip_id')
-            ->join('seats', 'trips.id', '=', 'seats.trip_id')
-            ->join('seat_types', 'seats.seat_type_id', '=', 'seat_types.id')
-            // ->where('day_trip.day_id',1)
+            ->join('day_trip', 'trips.id', '=', 'day_trip.trip_id') // this for get days of trip available
+            ->join('plane_seat_type', 'planes.id', '=', 'plane_seat_type.plane_id')
+            ->join('seat_types', 'plane_seat_type.seat_type_id', '=', 'seat_types.id')
+            // ->leftJoin('bookings', 'trips.id', '=', 'bookings.trip_id')
+            // ->join('bookings', 'trips.id', '=', 'bookings.trip_id')
+            ->where('seat_types.id',$request->seat_types_id)
+
+
             ->where('day_trip.day_id',($fromDateNumber->dayOfWeek+1))
-            ->where('seats.available','>=',$passengersNumber)
-            // ->where('seats.seat_type_id',1)
-            ->where('seats.seat_type_id',$request->seat_types_id)
             ->where('from_airport_id',$request->from)
             ->where('to_airport_id',$request->to)
+            // ->where(function($query) use ($request, $passengersNumber)
+            // {
+            //     // $query
+            //     $query
+            //     ->whereNull('bookings.date') // if dont
+            //     // ->whereNotNull('bookings.date') // if dont
+
+
+            //     ->orWhere(function($query) use ($request, $passengersNumber)
+            //     {
+            //         $query
+                    // ->whereNotNull('bookings.date')
+                    // ->Where('plane_seat_type.number','>=','bookings.available')
+                    // ->where('bookings.available','<=',$passengersNumber)
+                //     ;
+
+                // });
+
+
+            // })
             ->get();
         }
 
@@ -78,7 +100,6 @@ class DashboardController extends Controller
             ->join('trips', 'day_trip.trip_id', '=', 'trips.id')
             ->join('seats', 'trips.id', '=', 'seats.trip_id')
             ->join('seat_types', 'seats.seat_type_id', '=', 'seat_types.id')
-            ->where('seats.available','>=',$passengersNumber)
             ->where('from_airport_id',$request->from)
             ->where('to_airport_id',$request->to)
             ->get();
@@ -89,7 +110,7 @@ class DashboardController extends Controller
     }
     //TODO : return available days for trip
     public function getAvailableDays($days  , int $appointment_for=30) : array
-    {
+    {   $dates=[];
         // Get the now date
         $now = Carbon::now();
         $fromDate = new Carbon($now->toDateString());
@@ -109,7 +130,7 @@ class DashboardController extends Controller
             }
 
         }
-        return (array)$dates;
+        return (array)$dates??"";
 
     }
 

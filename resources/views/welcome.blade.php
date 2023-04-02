@@ -63,44 +63,47 @@
         }
     $( "#datepicker" ).datepicker({ minDate:  new Date(),beforeShowDay: available});
   } );
+  chenge()
 
     $("#to").change(function () {
-        var from = $("#from").val();
-
-        var to = $("#to").val();
-        if (from !="" && to !="") {
-            $.ajax({
-
-                type:'POST',
-
-                url:"{{ route('trips.get_available_days') }}",
-
-                data:{from:from, to:to},
-
-                success:function(data){
-
-                    availableDates=data;
-                    function available(date) {
-                        dmy = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear();
-                        // console.log(dmy+' : '+($.inArray(dmy, availableDates)));
-                        if ($.inArray(dmy, availableDates) != -1) {
-                            return [true, "","Available"];
-                        } else {
-                            return [false,"","unAvailable"];
-                        }
-                    }
-                $( "#datepicker" ).datepicker({ minDate:  new Date(),beforeShowDay: available});
-
-                    console.log(data);
-
-                }
-
-                });
-        }
-
+        chenge()
     });
 
+function chenge(){
+    var from = $("#from").val();
 
+var to = $("#to").val();
+if (from !="" && to !="") {
+    $.ajax({
+
+        type:'POST',
+
+        url:"{{ route('trips.get_available_days') }}",
+
+        data:{from:from, to:to},
+
+        success:function(data){
+
+            availableDates=data;
+            function available(date) {
+                dmy = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear();
+                // console.log(dmy+' : '+($.inArray(dmy, availableDates)));
+                if ($.inArray(dmy, availableDates) != -1) {
+                    return [true, "","Available"];
+                } else {
+                    return [false,"","unAvailable"];
+                }
+            }
+        $( "#datepicker" ).datepicker({ minDate:  new Date(),beforeShowDay: available});
+
+            console.log(data);
+
+        }
+
+        });
+}
+
+}
 
 
 </script>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Ticket;
+use App\Models\Booking;
 use App\Models\Passenger;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -59,11 +60,10 @@ class TicketController extends Controller
 
             Passenger::create($passenger);
         }
-        DB::table('users')
-        ->where('trip_id', $request->trip_id)  // find your user by their email
-        ->where('trip_id', $request->trip_id)  // find your user by their email
-        ->limit(1)  // optional - to ensure only one record is updated.
-        ->update(array('member_type' => $plan));  // update the record in the DB.
+        $booking=Booking::firstOrCreate(['trip_id' => $request->trip_id,'date'=>Carbon::parse($request->journey_date)]);
+        $booking->available += $request->numberOfPassengers;
+        $booking->save();
+
         $request->session()->flash('ticket.id', $ticket->id);
 
         return view('ticket.confirmed',compact('ticket'));

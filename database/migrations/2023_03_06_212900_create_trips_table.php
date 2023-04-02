@@ -26,6 +26,7 @@ return new class extends Migration
             $table->double('adults_price');
             $table->double('tax')->nullable();
             $table->double('children_price')->nullable();
+            $table->text('poilcy')->nullable();
             $table->boolean('need_visa');
             $table->time('check_in')->nullable();
             $table->timestamp('deleted_at')->nullable();

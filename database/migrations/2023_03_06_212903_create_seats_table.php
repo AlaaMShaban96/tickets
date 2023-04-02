@@ -17,7 +17,6 @@ return new class extends Migration
 
         Schema::create('seats', function (Blueprint $table) {
             $table->integer('number');
-            $table->integer('available')->nullable();
             $table->foreignId('seat_type_id');
             $table->foreignId('trip_id');
         });

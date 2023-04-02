@@ -129,16 +129,14 @@
                 <div class="row">
                     <div class="col-md-6 align-self-center">
                         <p class="copyright-text">
-                            &copy; Copyright <span id="date"></span> <a href="#"> MyTrip </a> All Rights
-                            Reserved.
+                            &copy; Copyright <span id="date"></span> <a href="https://www.eurolibya.com/"> EuroLibya </a> All Rights Reserved.
                         </p>
                     </div>
                     <div class="col-md-6 align-self-center">
                         <ul class="footer-social">
-                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                            <li><a href="https://www.facebook.com/LibyaEuro"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="https://twitter.com/eurolibya"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="https://www.linkedin.com/company/eurolibya/"><i class="fab fa-linkedin-in"></i></a></li>
                         </ul>
                     </div>
                 </div>

@@ -89,6 +89,7 @@ models:
     children_price: nullable double
     need_visa: boolean
     check_in: nullable time
+    poilcy: nullable text
     tax: nullable double
     deleted_at: nullable timestamp
     relationships:

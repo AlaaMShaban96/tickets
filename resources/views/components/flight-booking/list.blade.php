@@ -148,22 +148,7 @@
                                                                 tabindex="0">
                                                                 <div class="flight-booking-detail-info">
                                                                     <div class="flight-booking-policy">
-                                                                        <ul>
-                                                                            <li>
-                                                                                1. Refund and Date Change are done as
-                                                                                per the following policies.
-                                                                            </li>
-                                                                            <li>
-                                                                                2. Refund Amount= Refund Charge (as per
-                                                                                airline policy + ShareTrip Convenience
-                                                                                Fee).
-                                                                            </li>
-                                                                            <li>
-                                                                                3. Date Change Amount= Date Change Fee
-                                                                                (as per Airline Policy + ShareTrip
-                                                                                Convenience Fee).
-                                                                            </li>
-                                                                        </ul>
+                                                                        {{ $trip->poilcy}}
                                                                     </div>
                                                                 </div>
                                                             </div>

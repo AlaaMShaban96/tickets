@@ -1,4 +1,5 @@
 @props(['numberOfPassengers',"trip"])
+
 @for ($i = 1; $i <= $numberOfPassengers; $i++)
     <label>Personal number {{ $i }}</label>
     <div class="booking-form">
