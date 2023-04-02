@@ -24,8 +24,8 @@ class UserSeeder extends Seeder
                 'role'=>0
             ],
             [
-                'name'=>"test",
-                'email'=>"test@gmail.com",
+                'name'=>"Nader",
+                'email'=>"nader@gmail.com",
                 'password'=>Hash::make("12345678"),
                 'role'=>1
             ]
