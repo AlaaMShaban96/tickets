@@ -35,7 +35,8 @@ class Trip extends Model
         'need_visa',
         'tax',
         'check_in',
-        'poilcy'
+        'poilcy',
+        'available'
     ];
 
     /**

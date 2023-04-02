@@ -28,6 +28,7 @@ return new class extends Migration
             $table->double('children_price')->nullable();
             $table->text('poilcy')->nullable();
             $table->boolean('need_visa');
+            $table->boolean('available')->nullable()->default(true);
             $table->time('check_in')->nullable();
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();

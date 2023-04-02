@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::disableForeignKeyConstraints();
 
         Schema::create('plane_seat_type', function (Blueprint $table) {
-            $table->integer('number');
             $table->foreignId('plane_id');
             $table->foreignId('seat_type_id');
         });

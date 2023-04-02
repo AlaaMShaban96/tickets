@@ -46,10 +46,6 @@ class TripSeeder extends Seeder
                 "poilcy"=>"Refund and Date Change are done as per the following policies, Refund Amount= Refund Charge (as per airline policy + ShareTrip Convenience Fee), Date Change Amount= Date Change Fee (as per Airline Policy + ShareTrip Convenience Fee).",
             ],
         ]);
-        DB::table('seats')->insert([
-            ['number' => 10,  'trip_id' => 1, "seat_type_id" => 2],
-            ['number' => 10,  'trip_id' => 1, "seat_type_id" => 1],
-        ]);
 
     }
 }
