@@ -16,6 +16,11 @@
         }
     </style>
 @endsection
+@section('header')
+    <!-- header area -->
+    @include("layout.header")
+    <!-- header area end -->
+@endsection
 @section('content')
     <!-- breadcrumb -->
     <div class="site-breadcrumb" style="background: url({{ asset('cover_eurolibya.jpg')}})">

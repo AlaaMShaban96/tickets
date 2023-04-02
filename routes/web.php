@@ -33,6 +33,13 @@ Route::post('/get-available-days', [App\Http\Controllers\DashboardController::cl
 Route::get('/booking/{trip}', [App\Http\Controllers\TripController::class,'booking'])->name("trips.booking");
 
 Route::group(['middleware' => ['auth']], function () {
+    Route::get('/logout',[App\Http\Controllers\AuthController::class,'logout'])->name('logout');
+
+    Route::get('/passengers/{ticket}/list', [App\Http\Controllers\PassengerController::class,'list'])->name("passengers.list");
+    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class,'dashboard'])->name("dashboard.index");
+    Route::get('/tickets/{ticket}/chenge_status', [App\Http\Controllers\TicketController::class,'chengeStatus'])->name("tickets.chenge_status");
+    Route::resource('tickets', App\Http\Controllers\TicketController::class);
+
     Route::resource('countries', App\Http\Controllers\CountryController::class);
 
     Route::resource('airports', App\Http\Controllers\AirportController::class);
@@ -45,8 +52,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('planes', App\Http\Controllers\PlaneController::class);
 
-    Route::resource('passengers', App\Http\Controllers\PassengerController::class);
-    Route::resource('tickets', App\Http\Controllers\TicketController::class);
+    // Route::resource('passengers', App\Http\Controllers\PassengerController::class);
 
     Route::resource('trips', App\Http\Controllers\TripController::class);
 });

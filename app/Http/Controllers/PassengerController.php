@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PassengerStoreRequest;
-use App\Http\Requests\PassengerUpdateRequest;
+use App\Models\Ticket;
 use App\Models\Passenger;
 use Illuminate\Http\Request;
+use App\Http\Requests\PassengerStoreRequest;
+use App\Http\Requests\PassengerUpdateRequest;
 
 class PassengerController extends Controller
 {
@@ -86,5 +87,9 @@ class PassengerController extends Controller
         $passenger->delete();
 
         return redirect()->route('passenger.index');
+    }
+    public function list(Ticket $ticket)
+    {
+        return view('passenger.list',compact('ticket'));
     }
 }

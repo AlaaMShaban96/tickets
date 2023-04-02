@@ -94,14 +94,14 @@
                             <div class="form-group">
                                 {{-- <label>Email Address</label> --}}
                                 <div class="form-group-icon">
-                                    <input type="email" class="form-control" placeholder="Your Email">
+                                    <input type="email" name="email" class="form-control" placeholder="Your Email">
                                     <i class="far fa-envelope"></i>
                                 </div>
                             </div>
                             <div class="form-group">
                                 {{-- <label>Password</label> --}}
                                 <div class="form-group-icon">
-                                    <input type="password" class="form-control" placeholder="Your Password">
+                                    <input type="password" name="password" class="form-control" placeholder="Your Password">
                                     <i class="far fa-lock"></i>
                                 </div>
                             </div>

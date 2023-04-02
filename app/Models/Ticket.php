@@ -25,13 +25,9 @@ class Ticket extends Model
         'seat_type_id'
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'id' => 'integer',
+        // 'status'=>
         'trip_id' => 'integer',
         'seat_type_id' => 'integer',
         'deleted_at' => 'timestamp',

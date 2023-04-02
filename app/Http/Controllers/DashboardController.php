@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -132,6 +133,17 @@ class DashboardController extends Controller
         }
         return (array)$dates??"";
 
+    }
+    public function dashboard(Request $request)
+    {
+
+        $tickets=Ticket::with(['trip','seatType','trip.fromAirport','trip.toAirport','trip.plane.airline'])
+        ->withcount(['passengers'])
+        ->paginate(10);
+        // $tickets=Ticket::where('status',0)->get();
+        // $tickets=Ticket::all();
+        // dd($tickets);
+        return view('dashboard.index',compact('tickets'));
     }
 
 }

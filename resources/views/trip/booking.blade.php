@@ -1,5 +1,9 @@
 @extends('layout.master')
-
+@section('header')
+    <!-- header area -->
+    @include("layout.header")
+    <!-- header area end -->
+@endsection
 @section('content')
     <!-- breadcrumb -->
     <div class="site-breadcrumb" style="background: url({{ asset("summar.png")}})">

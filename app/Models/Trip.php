@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use App\Models\Day;
 use App\Models\Plane;
 use App\Models\Ticket;
 use App\Models\Airport;
 use App\Models\Booking;
 use App\Models\SeatType;
+use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
@@ -49,9 +51,11 @@ class Trip extends Model
         'adults_price' => 'double',
         'children_price' => 'double',
         'need_visa' => 'boolean',
+        // 'landing_at' => 'date',
+        // 'take_off_at' => 'date',
         'deleted_at' => 'timestamp',
     ];
-
+    protected $appends = ['diff_date_for_humans'];
     public function days()
     {
         return $this->belongsToMany(Day::class);
@@ -89,5 +93,12 @@ class Trip extends Model
     public function toAirport()
     {
         return $this->belongsTo(Airport::class);
+    }
+    public function getDiffDateForHumansAttribute()
+    {
+        $start_time = new Carbon($this->take_off_at);
+        $end_time = new Carbon($this->landing_at);
+        $interval = $start_time->diff($end_time);
+        return $interval->format('%h')." Hours ".$interval->format('%i')." Minutes";
     }
 }

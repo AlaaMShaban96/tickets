@@ -30,7 +30,7 @@ class AuthController extends Controller
          // check if the user exist in the database and redirect to the dashboard
             if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
                 Alert::toast('Welcome back bro ✌️', 'success')->position('top-end')->autoClose(5000);
-                return redirect()->to('/');
+                return redirect()->to(route('dashboard.index'));
             }
             // if the user not exist in the database redirect to the login page with error message
             return Redirect::to("login")->withSuccess('Oppes! You have entered invalid credentials');

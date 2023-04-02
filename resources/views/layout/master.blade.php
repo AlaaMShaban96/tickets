@@ -50,10 +50,8 @@
     </div>
     <!-- preloader end -->
 
+    @yield('header')
 
-    <!-- header area -->
-    @include("layout.header")
-    <!-- header area end -->
 
 
 
