@@ -67,6 +67,7 @@ class TicketController extends Controller
                     $request->session()->flash('ticket.id', $ticket->id);
             });
         } catch (\Throwable $th) {
+            dd($th);
             Alert::toast('system error', 'error')->position('top-end')->autoClose(5000);
             return redirect()->back()->withInput();
         }
