@@ -16,7 +16,7 @@ class PlaneSeeder extends Seeder
     {
         Plane::create([
             "name" => "Airbus a321",
-            "airline_id" => 1,
+            "code" =>"321"
         ]);
     }
 }

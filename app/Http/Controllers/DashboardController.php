@@ -49,7 +49,7 @@ class DashboardController extends Controller
             ->join('airports as airport_from', 'trips.from_airport_id', '=', 'airport_from.id')// this for retrive data for airport_from
             ->join('airports as airport_to', 'trips.to_airport_id', '=', 'airport_to.id')// this for retrive data for airport_to
             ->join('planes', 'trips.plane_id', '=', 'planes.id')// this for get name of plane and seat_types
-            ->join('airlines', 'planes.airline_id', '=', 'airlines.id')
+            ->join('airlines', 'trips.airline_id', '=', 'airlines.id')
             ->join('day_trip', 'trips.id', '=', 'day_trip.trip_id') // this for get days of trip available
             ->join('plane_seat_type', 'planes.id', '=', 'plane_seat_type.plane_id')
             ->join('seat_types', 'plane_seat_type.seat_type_id', '=', 'seat_types.id')

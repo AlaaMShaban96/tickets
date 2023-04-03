@@ -25,9 +25,10 @@ return new class extends Migration
             $table->time('landing_at');
             $table->double('adults_price');
             $table->double('tax')->nullable();
+            $table->foreignId('airline_id')->constrained();
             $table->double('children_price')->nullable();
             $table->text('poilcy')->nullable();
-            $table->boolean('need_visa');
+            $table->boolean('need_visa')->default(false);
             $table->boolean('available')->nullable()->default(true);
             $table->time('check_in')->nullable();
             $table->timestamp('deleted_at')->nullable();

@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Day;
 use App\Models\Plane;
 use App\Models\Ticket;
+use App\Models\Airline;
 use App\Models\Airport;
 use App\Models\Booking;
 use App\Models\SeatType;
@@ -36,7 +37,8 @@ class Trip extends Model
         'tax',
         'check_in',
         'poilcy',
-        'available'
+        'available',
+        'airline_id'
     ];
 
     /**
@@ -61,12 +63,6 @@ class Trip extends Model
     {
         return $this->belongsToMany(Day::class);
     }
-
-    public function seatTypes()
-    {
-        return $this->belongsToMany(SeatType::class, 'seats');
-    }
-
     public function ticket()
     {
         return $this->hasOne(Ticket::class);
@@ -76,19 +72,14 @@ class Trip extends Model
     {
         return $this->belongsTo(Plane::class);
     }
-    /**
-     * Get all of the bookingd for the Trip
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function bookingd()
-    {
-        return $this->hasMany(Booking::class);
-    }
 
     public function fromAirport()
     {
         return $this->belongsTo(Airport::class);
+    }
+    public function airline()
+    {
+        return $this->belongsTo(Airline::class);
     }
 
     public function toAirport()

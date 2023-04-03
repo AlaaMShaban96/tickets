@@ -18,8 +18,8 @@ return new class extends Migration
         Schema::create('planes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('code')->nullable();
             $table->text('photo')->nullable();
-            $table->foreignId('airline_id')->constrained();
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });

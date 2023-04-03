@@ -27,6 +27,7 @@ class TripSeeder extends Seeder
                 "adults_price" => 195,
                 "children_price" => 195,
                 'tax' => 1.5,
+                'airline_id' => 1,
                 "need_visa" => 1,
                 "poilcy"=>"Refund and Date Change are done as per the following policies, Refund Amount= Refund Charge (as per airline policy + ShareTrip Convenience Fee), Date Change Amount= Date Change Fee (as per Airline Policy + ShareTrip Convenience Fee).",
 
@@ -42,6 +43,7 @@ class TripSeeder extends Seeder
                 "adults_price" => 195,
                 "children_price" => 195,
                 'tax' => 1.5,
+                'airline_id' => 1,
                 "need_visa" => 1,
                 "poilcy"=>"Refund and Date Change are done as per the following policies, Refund Amount= Refund Charge (as per airline policy + ShareTrip Convenience Fee), Date Change Amount= Date Change Fee (as per Airline Policy + ShareTrip Convenience Fee).",
             ],

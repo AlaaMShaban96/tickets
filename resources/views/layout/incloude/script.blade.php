@@ -15,4 +15,6 @@
 <script src="{{ asset("assets/js/jquery.timepicker.min.js") }}"></script>
 <script src="{{ asset("assets/js/wow.min.js") }}"></script>
 <script src="{{ asset("assets/js/main.js") }}"></script>
+<script src="https://unpkg.com/@jarstone/dselect/dist/js/dselect.js"></script>
+
 @include('sweetalert::alert')

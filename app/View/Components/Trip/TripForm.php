@@ -5,14 +5,14 @@ namespace App\View\Components\Trip;
 use App\Models\Trip;
 use Illuminate\View\Component;
 
-class TripInfo extends Component
+class TripForm extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(public ?Trip $trip,public $airports,public $days,public $planes,public $airlines )
     {
         //
     }
@@ -24,6 +24,6 @@ class TripInfo extends Component
      */
     public function render()
     {
-        return view('components.trip.trip-info');
+        return view('components.trip.trip-form');
     }
 }
