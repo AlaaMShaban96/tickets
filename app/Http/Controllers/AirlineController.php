@@ -35,11 +35,18 @@ class AirlineController extends Controller
      */
     public function store(AirlineStoreRequest $request)
     {
-        $airline = Airline::create($request->validated());
+        if ($request->hasFile('logo_upload')) {
+            $request['logo'] = $request->logo_upload->store('public/airlines');
+        }
+        $airline = Airline::create([
+            'name'=>$request->name,
+            'logo'=>$request->logo,
+        ]);
+        // dd($airline);
 
         $request->session()->flash('airline.id', $airline->id);
 
-        return redirect()->route('airline.index');
+        return redirect()->route('airlines.index');
     }
 
     /**
@@ -69,7 +76,15 @@ class AirlineController extends Controller
      */
     public function update(AirlineUpdateRequest $request, Airline $airline)
     {
-        $airline->update($request->validated());
+        if ($request->hasFile('logo_upload')) {
+            $request['logo'] = $request->logo_upload->store('public/airlines');
+        }else {
+            $request['logo']=$airline->logo;
+        }
+        $airline->update([
+            'name'=>$request->name,
+            'logo'=>$request->logo,
+        ]);
 
         $request->session()->flash('airline.id', $airline->id);
 
@@ -85,6 +100,6 @@ class AirlineController extends Controller
     {
         $airline->delete();
 
-         return redirect()->route('airline.index');
+         return redirect()->route('airlines.index');
     }
 }

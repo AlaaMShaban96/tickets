@@ -80,7 +80,7 @@
                                     @endswitch
                                 </td>
 
- 
+
                                 <td>
                                     <a href="{{ route('passengers.list',$ticket->id)}}" class="btn btn-outline-secondary btn-sm" title="list of passengers "><i class="far fa-eye"></i></a>
                                     <a href="{{ route("tickets.chenge_status",['ticket'=>$ticket->id,'status'=>1])}}" class="btn btn-outline-success btn-sm"><i class="fa-duotone fa-badge-check"></i>
@@ -92,7 +92,7 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- pagination -->
+                {{-- <!-- pagination -->
                 <div class="pagination-area my-3">
                     <div aria-label="Page navigation example">
                         <ul class="pagination mt-0">
@@ -111,7 +111,7 @@
                             </li>
                         </ul>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

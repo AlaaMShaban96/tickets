@@ -25,7 +25,7 @@ class AirlineStoreRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string'],
-            'logo' => ['nullable', 'string'],
+            'logo_upload' => ['required'],
             'deleted_at' => ['nullable'],
         ];
     }

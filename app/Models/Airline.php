@@ -26,6 +26,7 @@ class Airline extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'logo' => 'string',
         'deleted_at' => 'timestamp',
     ];
 
