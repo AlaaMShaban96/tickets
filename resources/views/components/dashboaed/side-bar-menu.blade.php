@@ -23,7 +23,7 @@
                         {{-- <li><a href="#"> Cabin Class</a></li> --}}
                         <li><a href="{{ route('airlines.index')}}"> Airline</a></li>
                         <li><a href="{{ route('airports.index')}}"> Airport</a></li>
-                        <li><a href="#"> Plane</a></li>
+                        <li><a href="{{ route('planes.index')}}"> Plane</a></li>
                     </ul>
                 </div>
             </li>

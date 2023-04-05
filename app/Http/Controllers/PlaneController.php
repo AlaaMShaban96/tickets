@@ -35,11 +35,17 @@ class PlaneController extends Controller
      */
     public function store(PlaneStoreRequest $request)
     {
-        $plane = Plane::create($request->validated());
+        if ($request->hasFile('logo_upload')) {
+            $request['photo'] = $request->logo_upload->store('public/planes');
+        }
+        $plane = Plane::create([
+            'name'=>$request->name,
+            'photo'=>$request->photo,
+        ]);
 
         $request->session()->flash('plane.id', $plane->id);
 
-        return redirect()->route('plane.index');
+        return redirect()->route('planes.index');
     }
 
     /**
@@ -69,11 +75,19 @@ class PlaneController extends Controller
      */
     public function update(PlaneUpdateRequest $request, Plane $plane)
     {
-        $plane->update($request->validated());
+        if ($request->hasFile('logo_upload')) {
+            $request['photo'] = $request->logo_upload->store('public/planes');
+        }else {
+            $request['photo']=$airline->photo;
+        }
+        $plane->update([
+            'name'=>$request->name,
+            'photo'=>$request->photo,
+        ]);
 
         $request->session()->flash('plane.id', $plane->id);
 
-        return redirect()->route('plane.index');
+        return redirect()->route('planes.index');
     }
 
     /**

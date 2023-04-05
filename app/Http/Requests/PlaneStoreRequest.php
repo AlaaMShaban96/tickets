@@ -25,8 +25,7 @@ class PlaneStoreRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string'],
-            'photo' => ['nullable', 'string'],
-            'airline_id' => ['required', 'integer', 'exists:airlines,id'],
+            'logo_upload' => ['nullable'],
             'deleted_at' => ['nullable'],
         ];
     }
