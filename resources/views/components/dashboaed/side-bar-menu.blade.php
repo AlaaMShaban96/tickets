@@ -11,7 +11,7 @@
         </div>
         <ul class="user-profile-sidebar-list">
             <li><a class="active" href="{{ route('dashboard.index')}}"><i class="far fa-gauge-high"></i> Dashboard</a></li>
-            <li><a href="#"><i class="far fa-user"></i> My Profile</a></li>
+            {{-- <li><a href="#"><i class="far fa-user"></i> My Profile</a></li> --}}
             {{-- <li><a href="#"><i class="far fa-clipboard-list"></i> My History</a></li> --}}
             <li class="profile-menu">
                 <a class=" collapsed" href="#profile-menu" data-bs-toggle="collapse" aria-expanded="false" aria-controls="profile-menu">
