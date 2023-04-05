@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Airport;
+use App\Models\Country;
+use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\AirportStoreRequest;
 use App\Http\Requests\AirportUpdateRequest;
-use App\Models\Airport;
-use Illuminate\Http\Request;
 
 class AirportController extends Controller
 {
@@ -26,7 +28,8 @@ class AirportController extends Controller
      */
     public function create(Request $request)
     {
-        return view('airport.create');
+        $countries=Country::all();
+        return view('airport.create',compact('countries'));
     }
 
     /**
@@ -35,11 +38,12 @@ class AirportController extends Controller
      */
     public function store(AirportStoreRequest $request)
     {
+        // dd($request->all());
         $airport = Airport::create($request->validated());
 
         $request->session()->flash('airport.id', $airport->id);
 
-        return redirect()->route('airport.index');
+        return redirect()->route('airports.index');
     }
 
     /**
@@ -59,7 +63,9 @@ class AirportController extends Controller
      */
     public function edit(Request $request, Airport $airport)
     {
-        return view('airport.edit', compact('airport'));
+        $countries=Country::all();
+
+        return view('airport.edit', compact('airport','countries'));
     }
 
     /**
@@ -73,7 +79,7 @@ class AirportController extends Controller
 
         $request->session()->flash('airport.id', $airport->id);
 
-        return redirect()->route('airport.index');
+        return redirect()->route('airports.index');
     }
 
     /**
@@ -83,8 +89,14 @@ class AirportController extends Controller
      */
     public function destroy(Request $request, Airport $airport)
     {
-        $airport->delete();
+        if ($airport->trips()->exists()) {
+            Alert::toast('Airport has Trips  ', 'error')->position('top-end')->autoClose(5000);
+        } else {
+            Alert::toast('Airport has been  Deleted ', 'success')->position('top-end')->autoClose(5000);
+            $airport->delete();
+        }
 
-        return redirect()->route('airport.index');
+
+        return redirect()->route('airports.index');
     }
 }

@@ -155,7 +155,12 @@ class TripController extends Controller
      */
     public function destroy(Request $request, Trip $trip)
     {
-        $trip->delete();
+        if ($trip->ticket()->exists()) {
+            Alert::toast('Trip has Tickets  ', 'error')->position('top-end')->autoClose(5000);
+        } else {
+            Alert::toast('Trip has been  Deleted ', 'success')->position('top-end')->autoClose(5000);
+            $trip->delete();
+        }
 
         return redirect()->route('trip.index');
     }

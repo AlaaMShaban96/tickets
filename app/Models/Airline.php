@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Trip;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Airline extends Model
 {
@@ -30,8 +31,8 @@ class Airline extends Model
         'deleted_at' => 'timestamp',
     ];
 
-    public function planes()
+    public function trips()
     {
-        return $this->hasMany(Plane::class);
+        return $this->hasMany(Trip::class);
     }
 }

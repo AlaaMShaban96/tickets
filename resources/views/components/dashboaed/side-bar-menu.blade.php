@@ -22,7 +22,7 @@
                         <li><a href="{{ route('trips.index');}}"> Flight</a></li>
                         {{-- <li><a href="#"> Cabin Class</a></li> --}}
                         <li><a href="{{ route('airlines.index')}}"> Airline</a></li>
-                        <li><a href="#"> Airport</a></li>
+                        <li><a href="{{ route('airports.index')}}"> Airport</a></li>
                         <li><a href="#"> Plane</a></li>
                     </ul>
                 </div>

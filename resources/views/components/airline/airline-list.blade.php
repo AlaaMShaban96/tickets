@@ -85,7 +85,7 @@
                     </div>
                     <div class="team-social">
                         <ul class="team-social-btn">
-                            <li><span><i class="fa-solid fa-plus"></i></span></li>
+                            <li><span><i class="fa-regular fa-ticket-airline"></i></span></li>
                             <li><a href="{{ route('airlines.edit',$airline->id)}}"><i class="fa-regular fa-pen-to-square"></i></a></li>
                             <form action="{{ route("airlines.destroy",$airline->id)}}" method="post">
                                 @csrf

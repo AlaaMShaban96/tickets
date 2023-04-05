@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AirlineStoreRequest;
-use App\Http\Requests\AirlineUpdateRequest;
 use App\Models\Airline;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
+use App\Http\Requests\AirlineStoreRequest;
+use App\Http\Requests\AirlineUpdateRequest;
 
 class AirlineController extends Controller
 {
@@ -98,7 +99,12 @@ class AirlineController extends Controller
      */
     public function destroy(Request $request, Airline $airline)
     {
-        $airline->delete();
+        if ($airline->trips()->exists()) {
+            Alert::toast('Airline has Trips  ', 'error')->position('top-end')->autoClose(5000);
+        } else {
+            Alert::toast('Airline has been  Deleted ', 'success')->position('top-end')->autoClose(5000);
+            $airline->delete();
+        }
 
          return redirect()->route('airlines.index');
     }

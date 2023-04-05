@@ -10,4 +10,4 @@
     <link rel="stylesheet" href="{{ asset("assets/css/jquery-ui.min.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/css/jquery.timepicker.min.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/css/style.css") }}">
-    <link rel="stylesheet" href="https://unpkg.com/@jarstone/dselect/dist/css/dselect.css">
+    <link rel="stylesheet" href="{{ asset("assets/css/dselect.css") }}">

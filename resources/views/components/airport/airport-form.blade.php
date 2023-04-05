@@ -12,41 +12,44 @@
     <div class="user-profile-wrapper">
         <div class="col-md-12">
             <div class="booking-sort">
-                <a href="{{ route('airlines.index') }}" class="theme-btn btn-danger mt-2">Back</a>
+                <a href="{{ route('airports.index') }}" class="theme-btn btn-danger mt-2">Back</a>
 
             </div>
         </div>
-        @if (isset($airline->id))
-            <form action="{{ route('airlines.update', $airline->id) }}" method="post" enctype="multipart/form-data">
+        @if (isset($airport->id))
+            <form action="{{ route('airports.update', $airport->id) }}" method="post" >
                 @method('PUT')
             @else
-                <form action="{{ route('airlines.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('airports.store') }}" method="post" >
         @endif
         @csrf
         <div class="user-profile-card add-listing">
-            <h4 class="user-profile-card-title">{{ isset($airline->id) ? 'Edit' : 'Add' }} Airport</h4>
+            <h4 class="user-profile-card-title">{{ isset($airport->id) ? 'Edit' : 'Add' }} Airport</h4>
             <div class="col-lg-12">
                 <div class="add-listing-form">
                     <h5 class="mb-4">Basic Information</h5>
                     <div class="row align-items-center">
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <div class="form-group">
                                 <label>Name</label>
-                                <input required type="text" value="{{ $airline?->name }}" name="name"
+                                <input required type="text" value="{{ $airport?->name }}" name="name"
                                     class="form-control" placeholder="Enter name">
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Logo </label>
-                                <input {{!isset($airline->id)?"required":''}} type="file"  name="logo_upload"
-                                    class="form-control" placeholder="Enter name">
+                                <label>countries </label>
+                                <select class="form-select " value="{{ $airport?->country_id }}" id="countries" name="country_id">
+                                    @foreach ($countries as $country)
+                                        <option {{ $airport?->country_id == $country->id ? 'selected':''}} value="{{ $country->id}}">{{ $country->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
 
                         <div class="col-lg-12 my-4">
-                            <button type="submit" class="theme-btn">Submit Your Flight</button>
+                            <button type="submit" class="theme-btn">Submit  </button>
                         </div>
                     </div>
                 </div>

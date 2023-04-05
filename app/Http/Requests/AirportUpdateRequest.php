@@ -25,7 +25,7 @@ class AirportUpdateRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:100'],
-            'country_id' => ['required', 'integer', 'exists:counties,id'],
+            'country_id' => ['required', 'integer', 'exists:countries,id'],
             'deleted_at' => ['nullable'],
         ];
     }
