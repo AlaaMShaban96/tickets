@@ -19,7 +19,7 @@
         <div class="col-md-12 col-lg-4">
             <div class="team-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".50s">
                 <div class="team-img">
-                    <img src="{{ \Storage::disk('local')->url($plane->photo??'public/plane.webp') }}" style="width: 100%;height: 188px;" alt="thumb">
+                    <img src="{{ asset(\Storage::disk('local')->url($plane->photo??'public/plane.webp')) }}" style="width: 100%;height: 188px;" alt="thumb">
                 </div>
                 <div class="team-content">
                     <div class="team-bio">

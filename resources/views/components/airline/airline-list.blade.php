@@ -76,7 +76,7 @@
         <div class="col-md-12 col-lg-4">
             <div class="team-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".50s">
                 <div class="team-img">
-                    <img src="{{ \Storage::disk('local')->url($airline->logo) }}" style="width: 100%;" alt="thumb">
+                    <img src="{{ asset(\Storage::disk('local')->url($airline->logo)) }}" style="width: 100%;" alt="thumb">
                 </div>
                 <div class="team-content">
                     <div class="team-bio">
