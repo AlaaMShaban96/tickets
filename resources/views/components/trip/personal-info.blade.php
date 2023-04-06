@@ -291,6 +291,8 @@
                     <div class="form-group-icon">
                         <input required type="file" name="passengers[{{ $i }}][passport_photo]"  class="form-control" placeholder="Passport photo">
                         <i class="fa-duotone fa-upload"></i>
+                        <span class="badge bg-danger">Please upload clear full photo of passenger visa / ID</span>
+
                     </div>
                 </div>
             </div>
@@ -301,6 +303,8 @@
                     <div class="form-group-icon">
                         <input required type="file" name="passengers[{{ $i }}][visa_photo]"  class="form-control" placeholder="Visa photo">
                         <i class="fa-duotone fa-image"></i>
+                        <span class="badge bg-danger">Please upload clear full photo of passenger visa / ID</span>
+
                     </div>
                 </div>
             </div>
