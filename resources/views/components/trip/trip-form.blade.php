@@ -40,7 +40,7 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>From airport</label>
-                                    <select required class="form-select  " id="from_airport_id" name="from_airport_id">
+                                    <select required class="form-select" value="{{ $trip?->from_airport_id}}" id="from_airport_id" name="from_airport_id">
                                         @foreach ($airports as $airport)
                                             <option value="{{ $airport->id }}">{{ $airport->name }}</option>
                                         @endforeach
@@ -51,7 +51,7 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>To airport</label>
-                                    <select required class="form-select  " id="to_airport_id" name="to_airport_id">
+                                    <select required class="form-select" value="{{ $trip?->to_airport_id}}" id="to_airport_id" name="to_airport_id">
                                         @foreach ($airports as $airport)
                                             <option value="{{ $airport->id }}">{{ $airport->name }}</option>
                                         @endforeach
