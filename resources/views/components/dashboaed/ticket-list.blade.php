@@ -33,7 +33,7 @@
                                 <td>
                                     <div class="table-listing-info">
                                         <a href="#">
-                                            <img src="{{ asset($ticket->trip->plane->airline->logo)}}" alt="">
+                                            <img src="{{ asset($ticket->trip->airline->logo)}}" alt="">
                                             <div class="table-listing-content">
                                                 <h6>
                                                     <i class="far fa-location-dot"></i>

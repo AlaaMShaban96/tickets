@@ -147,7 +147,7 @@
                                     <input class="form-check-input" {{ $trip?->available ==1 ? 'checked' : '' }}
                                         name="available" type="checkbox"  id="available">
                                     <label class="form-check-label" for="available">
-                                        available
+                                        Available
                                     </label>
                                 </div>
                             </div>
@@ -156,7 +156,7 @@
                                     <input class="form-check-input" {{ $trip?->need_visa ? 'checked' : '' }}
                                         name="need_visa" type="checkbox"  id="need_visa">
                                     <label class="form-check-label" for="need_visa">
-                                        need visa
+                                        Visa / ID photo
                                     </label>
                                 </div>
                             </div>
