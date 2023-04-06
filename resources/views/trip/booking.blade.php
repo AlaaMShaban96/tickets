@@ -10,7 +10,7 @@
         <div class="container">
             <h2 class="breadcrumb-title">{{ $trip->fromAirport->name }} - {{ $trip->toAirport->name }} </h2>
             <ul class="breadcrumb-menu">
-                <li><a href="index.html">{{ $trip->plane->airline->name }}</a></li>
+                <li><a href="index.html">{{ $trip->airline->name }}</a></li>
                 <li class="active">{{ $trip->name }}</li>
             </ul>
         </div>

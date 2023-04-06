@@ -42,7 +42,7 @@
                                     <label>From airport</label>
                                     <select required class="form-select" value="{{ $trip?->from_airport_id}}" id="from_airport_id" name="from_airport_id">
                                         @foreach ($airports as $airport)
-                                            <option value="{{ $airport->id }}">{{ $airport->name }}</option>
+                                            <option {{ $trip?->from_airport_id == $airport->id ? 'selected':''}}  value="{{ $airport->id }}">{{ $airport->name }}</option>
                                         @endforeach
 
                                     </select>
@@ -53,7 +53,7 @@
                                     <label>To airport</label>
                                     <select required class="form-select" value="{{ $trip?->to_airport_id}}" id="to_airport_id" name="to_airport_id">
                                         @foreach ($airports as $airport)
-                                            <option value="{{ $airport->id }}">{{ $airport->name }}</option>
+                                            <option {{ $trip?->to_airport_id == $airport->id ? 'selected':''}}  value="{{ $airport->id }}">{{ $airport->name }}</option>
                                         @endforeach
 
                                     </select>
@@ -144,8 +144,8 @@
                             <h5 class="my-4">Settings Information</h5>
                             <div class="col-6 col-md-3">
                                 <div class="form-check">
-                                    <input class="form-check-input" {{ $trip?->available ? 'checked' : '' }}
-                                        name="available" type="checkbox" value="1" id="available">
+                                    <input class="form-check-input" {{ $trip?->available ==1 ? 'checked' : '' }}
+                                        name="available" type="checkbox"  id="available">
                                     <label class="form-check-label" for="available">
                                         available
                                     </label>
@@ -154,7 +154,7 @@
                             <div class="col-6 col-md-3">
                                 <div class="form-check">
                                     <input class="form-check-input" {{ $trip?->need_visa ? 'checked' : '' }}
-                                        name="need_visa" type="checkbox" value="1" id="need_visa">
+                                        name="need_visa" type="checkbox"  id="need_visa">
                                     <label class="form-check-label" for="need_visa">
                                         need visa
                                     </label>

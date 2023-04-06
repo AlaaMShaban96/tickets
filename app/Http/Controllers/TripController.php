@@ -85,6 +85,7 @@ class TripController extends Controller
     {
         try {
             DB::beginTransaction();
+                
                 $trip = Trip::create($request->validated());
                 $trip->days()->sync($request->days);
                 Alert::toast('Trip has been Created ', 'success')->position('top-end')->autoClose(5000);
