@@ -427,7 +427,6 @@ Version         : 1.0
         var ft = $(this).val();
         if (ft === "round_way") {
             // $( "#datepicker" ).datepicker({ minDate:  new Date(),beforeShowDay: available});
-            $("#from").val()
             $('.flight-search .search-form-return').show();
             $('.have-to-clone').hide();
             $('.another-item').remove();

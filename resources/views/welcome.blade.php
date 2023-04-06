@@ -138,12 +138,16 @@
 
         $("#to").change(function() {
             chengeDate($("#from").val(), $("#to").val(), 'one_way')
+            if ($("#return_way").is(":checked")) {
+            chengeDate($("#to").val(), $("#from").val(), 'round_way')
+
+        }
             // available();
 
         });
         $("#return_way").change(function() {
             chengeDate($("#to").val(), $("#from").val(), 'round_way')
-            console.log();
+            console.log(';k[pk[pk]]');
         });
 
         function chengeDate(from, to, x) {
