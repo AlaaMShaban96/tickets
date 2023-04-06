@@ -4,12 +4,12 @@
     $taxes=($numberOfAdult + $numberOfChildren) * $trip->tax;
 @endphp
 <div class="booking-property-img">
-    <img src="{{ asset($trip->plane->airline->logo)}}" alt="">
+    <img src="{{ asset($trip->airline->logo)}}" alt="">
 </div>
 <div class="booking-property-content">
     <div class="booking-property-title">
         <div>
-            <h5>{{ $trip->plane->airline->name}} </h5>
+            <h5>{{ $trip->airline->name}} </h5>
             <p><i class="far fa-map-marker-alt"></i> {{ $trip->fromAirport->name }},  {{ $trip->toAirport->name }}</p>
         </div>
     </div>

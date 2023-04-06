@@ -174,7 +174,7 @@ class TripControllerTest extends TestCase
         $response->assertSessionHas('trip.id', $trip->id);
 
         $this->assertEquals($name, $trip->name);
-        $this->assertEquals($plane->id, $trip->plane_id);
+        $this->assertEquals($plane->id, $trip_id);
         $this->assertEquals($from_airport->id, $trip->from_airport_id);
         $this->assertEquals($to_airport->id, $trip->to_airport_id);
         $this->assertEquals($take_off_at, $trip->take_off_at);
