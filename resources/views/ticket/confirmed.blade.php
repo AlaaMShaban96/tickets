@@ -53,8 +53,8 @@
                                     <div class="booking-summary-list">
                                         <h6>Airline Info</h6>
                                         <ul>
-                                            <li> Airline Name <span>{{$ticket->trip->plane->airline->name}}</span></li>
-                                            <li>Plane Address <span>{{ $ticket->trip->plane->name}}</span></li>
+                                            <li> Airline Name <span>{{$ticket->trip->airline->name}}</span></li>
+                                            <li>Plane Address <span>{{ $ticket->trip->name}}</span></li>
                                         </ul>
                                     </div>
                                 </div>
