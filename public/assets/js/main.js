@@ -425,7 +425,9 @@ Version         : 1.0
     // flight type search form
     $('.flight-type .form-check-input').change(function (e) {
         var ft = $(this).val();
-        if (ft === "round-way") {
+        if (ft === "round_way") {
+            // $( "#datepicker" ).datepicker({ minDate:  new Date(),beforeShowDay: available});
+            $("#from").val()
             $('.flight-search .search-form-return').show();
             $('.have-to-clone').hide();
             $('.another-item').remove();
@@ -447,15 +449,28 @@ Version         : 1.0
         returnDate = new Date();
 
     journeyDate.setDate($(".journey-date").val());
-    returnDate.setDate(today.getDate() + 2);
+    returnDate.setDate($(".return-date").val());
 
     // this for set date in input when open page
     var x = $(".journey-date").closest(".search-form-date").find(".journey-date").val();
+    var y = $(".return-date").closest(".search-form-date").find(".return-date").val();
     var pcnx = $(".passenger-class-info input[type='radio']").closest(".form-check").find("input[type='radio']:checked").parent().text();
+    if ($("#return_way").is(":checked")) {
+        $('.flight-search .search-form-return').show();
+        $('.have-to-clone').hide();
+            $('.another-item').remove();
 
+    }
+    // $('.flight-search .search-form-return').show();
+    // $('.have-to-clone').hide();
+    // $('.another-item').remove();
     if (x !="") {
         const journeyDayNamex = new Date(x).toLocaleString('en-us', { weekday: 'long' });
         $(".journey-date").closest(".search-form-date").find(".journey-day-name").html(journeyDayNamex);
+    }
+    if (y !="") {
+        const returnDayNamex = new Date(y).toLocaleString('en-us', { weekday: 'long' });
+        $(".return-date").closest(".search-form-date").find(".return-day-name").html(returnDayNamex);
     }
     if (pcnx != "") {
         $(".passenger-class-info input[type='radio']").closest(".passenger-box").find(".passenger-class-name").html(pcnx);

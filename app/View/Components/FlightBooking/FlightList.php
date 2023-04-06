@@ -11,7 +11,7 @@ class FlightList extends Component
      *
      * @return void
      */
-    public function __construct(public $trips, public int $numberOfadult=1,public  int $numberOfChildren=0)
+    public function __construct(public $trips, public int $numberOfadult=1,public  int $numberOfChildren=0 ,public  $flightDate)
     {
         //
     }
@@ -23,6 +23,6 @@ class FlightList extends Component
      */
     public function render()
     {
-        return view('components.flight-booking.list');
+        return view('components.flight-booking.flight-list');
     }
 }

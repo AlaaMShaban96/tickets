@@ -8,19 +8,19 @@
                         <!-- flight type -->
                         <div class="flight-type">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" checked value="one_way" name="flight_type"
+                                <input class="form-check-input" type="radio" {{request()->get('flight_type')=="one_way"?'checked':'' }} value="one_way" name="flight_type"
                                     id="flight-type1">
                                 <label class="form-check-label" for="flight-type1">
                                     One Way
                                 </label>
                             </div>
-                            {{-- <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" value="round_way"
+                            <div class="form-check form-check-inline">
+                                <input  id="return_way" {{request()->get('flight_type')=="round_way"?'checked':'' }} class="form-check-input" type="radio" value="round_way"
                                     name="flight_type" id="flight-type2">
                                 <label class="form-check-label" for="flight-type2">
                                     Round Way
                                 </label>
-                            </div> --}}
+                            </div>
                         </div>
                         <!-- flight type end -->
 
@@ -72,11 +72,11 @@
                                                         </div>
                                                         <p class="journey-day-name"></p>
                                                     </div>
-                                                    <div class="search-form-return">
+                                                    <div  class="search-form-return" id="return_input_date">
                                                         <label>Return Date</label>
                                                         <div class="form-group-icon">
-                                                            <input type="text" name="return_date"
-                                                                class="form-control date-picker return-date">
+                                                            <input id="datepicker_return_date" type="text" value="{{ request()->get('return_date')??now()->format("Y-m-d")}}"  name="return_date"
+                                                                class="form-control   return-date ">
                                                         </div>
                                                         <p class="return-day-name"></p>
                                                     </div>
