@@ -34,7 +34,7 @@ class TripUpdateRequest extends FormRequest
             'adults_price' => ['required', 'numeric'],
             'children_price' => ['nullable', 'numeric'],
             'need_visa' => ['required'],
-            'available' => ['required'],
+            'available' => ['nullable'],
             'poilcy' => ['nullable'],
 
         ];
