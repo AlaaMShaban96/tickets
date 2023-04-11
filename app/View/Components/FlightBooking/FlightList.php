@@ -11,7 +11,7 @@ class FlightList extends Component
      *
      * @return void
      */
-    public function __construct(public $trips, public int $numberOfadult=1,public  int $numberOfChildren=0 ,public  $flightDate)
+    public function __construct(public $tripType,public $trips, public int $numberOfadult=1,public  int $numberOfChildren=0 ,public  $flightDate)
     {
         //
     }

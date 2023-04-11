@@ -52,15 +52,31 @@ class TicketController extends Controller
                         'adults_number'=> $request->numberOfAdult,
                         'children_number'=> $request->numberOfChildren
                     ]);
-                    foreach ($request->passengers as $key => $passenger) {
-                        $passenger['ticket_id']=$ticket->id;
-                        if (isset($passenger['passport_photo'])) {
-                            $passenger['passport_photo'] = Storage::disk('local')->put("public/ticket/".$ticket->id."/passport/".$passenger['name'], $passenger['passport_photo']);
+                    if ($request->return_date != null && $request->return_trip_id != null ) {
+                        $returnTicket = Ticket::create([
+                            'trip_id'=>$request->return_trip_id,
+                            'type'=> $request->type,
+                            'seat_type_id'=> $request->seat_type_id,
+                            'journey_date'=> Carbon::parse($request->return_date),
+                            'adults_number'=> $request->numberOfAdult,
+                            'children_number'=> $request->numberOfChildren
+                        ]);
+                    }
+
+                    foreach ($request->passengers as $key => $data) {
+                        $data['ticket_id']=$ticket->id;
+                        if (isset($data['passport_photo'])) {
+                            $data['passport_photo'] = Storage::disk('local')->put("public/ticket/".$ticket->id."/passport/".$data['name'], $data['passport_photo']);
                         }
-                        if (isset($passenger['visa_photo'])) {
-                            $passenger['visa_photo'] = Storage::disk('local')->put("public/ticket/".$ticket->id."/visa/".$passenger['name'], $passenger['visa_photo']);
+                        if (isset($data['visa_photo'])) {
+                            $data['visa_photo'] = Storage::disk('local')->put("public/ticket/".$ticket->id."/visa/".$data['name'], $data['visa_photo']);
                         }
-                        Passenger::create($passenger);
+                        $passenger=Passenger::create($data);
+                        if (isset($returnTicket)) {
+                            $return_passenger=$passenger->replicate();
+                            $return_passenger->ticket_id=$returnTicket->id;
+                            $return_passenger->push();
+                        }
                     }
 
 

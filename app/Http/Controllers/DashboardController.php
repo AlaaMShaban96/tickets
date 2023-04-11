@@ -43,7 +43,7 @@ class DashboardController extends Controller
 
         }
 
-        // dd($request->all(),$trips,($fromDateNumber->dayOfWeek),$request->seat_types_id);
+        // dd($trips);
         return view('welcome',compact('trips','numberOfadult','numberOfChildren'));
     }
     public function getDates(Request $request)

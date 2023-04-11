@@ -30,7 +30,7 @@ Route::post('/login',[App\Http\Controllers\AuthController::class,'login'])->name
 
 Route::get('/', [App\Http\Controllers\DashboardController::class,'index'])->name("trips.search");
 Route::post('/get-available-days', [App\Http\Controllers\DashboardController::class,'getDates'])->name("trips.get_available_days");
-Route::get('/booking/{trip}', [App\Http\Controllers\TripController::class,'booking'])->name("trips.booking");
+Route::get('/booking', [App\Http\Controllers\TripController::class,'booking'])->name("trips.booking");
 Route::post('/tickets', [App\Http\Controllers\TicketController::class,'store'])->name("tickets.store");
 
 Route::group(['middleware' => ['auth']], function () {

@@ -38,6 +38,21 @@
     <!-- search area end -->
 
     <div class="container mt-5">
+        @if (request()->get('flight_type') == 'round_way')
+            @if (isset($trips['round_way']))
+
+                <a id="booking_round_way"
+                    href="{{ route('trips.booking', [
+                        'seat_types_id' => request()->get('seat_types_id'),
+                        'journey_date' => request()->get('journey_date'),
+                        'return_date' => request()->get('return_date'),
+                        'numberOfAdult' => $numberOfadult,
+                        'numberOfChildren' => $numberOfChildren,
+                    ]) }}"
+                    class="theme-btn text-end">Book Now<i class="far fa-arrow-right"></i></a>
+            @endif
+        @endif
+
 
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
@@ -55,62 +70,30 @@
         </ul>
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                <!-- flight booking -->
-                <x-flight-booking.flight-list :trips="$trips['one_ways']" :flightDate="request()->get('journey_date')" :numberOfadult="$numberOfadult" :numberOfChildren="$numberOfChildren">
-                    </x-flight-booking.list>
-                    <!-- flight booking end -->
+                @if (isset($trips['one_ways']))
+                    <!-- flight booking -->
+                    <x-flight-booking.flight-list tripType="one_way" :trips="$trips['one_ways']" :flightDate="request()->get('journey_date')" :numberOfadult="$numberOfadult"
+                        :numberOfChildren="$numberOfChildren">
+                        </x-flight-booking.list>
+                        <!-- flight booking end -->
+                @endif
+
             </div>
             @if (request()->get('flight_type') == 'round_way')
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                    <!-- flight booking -->
-                    <x-flight-booking.flight-list :trips="$trips['round_way']" :flightDate="request()->get('return_date')" :numberOfadult="$numberOfadult" :numberOfChildren="$numberOfChildren">
-                        </x-flight-booking.list>
-                        <!-- flight booking end -->
+                    @if (isset($trips['round_way']))
+                        <!-- flight booking -->
+                        <x-flight-booking.flight-list tripType="round_way" :trips="$trips['round_way']" :flightDate="request()->get('return_date')"
+                            :numberOfadult="$numberOfadult" :numberOfChildren="$numberOfChildren">
+                            </x-flight-booking.list>
+
+                            <!-- flight booking end -->
+                    @endif
+
                 </div>
             @endif
         </div>
 
-
-
-
-
-        {{--
-        <div class="col-lg-12 col-xl-12">
-            <div class="flight-booking-detail-right">
-                <ul class="nav nav-tabs" id="frTab1" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="fr-tab1" data-bs-toggle="tab" data-bs-target="#fr-tab-pane1"
-                            type="button" role="tab" aria-controls="fr-tab-pane1" aria-selected="true">One Way</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="fr-tab2" data-bs-toggle="tab" data-bs-target="#fr-tab-pane2"
-                            type="button" role="tab" aria-controls="fr-tab-pane2" aria-selected="false">Round
-                            Way</button>
-                    </li>
-
-                </ul>
-                <div class="tab-content" id="frTabContent1">
-                    <div class="tab-pane  show active" id="fr-tab-pane1" role="tabpanel" aria-labelledby="fr-tab1"
-                        tabindex="0">
-                        <div class="flight-booking-detail-info">
-                            <!-- flight booking -->
-                            <x-flight-booking.list :trips="$trips['one_ways']" :numberOfadult="$numberOfadult" :numberOfChildren="$numberOfChildren">
-                            </x-flight-booking.list>
-                            <!-- flight booking end -->
-                        </div>
-                    </div>
-                    <div class="tab-pane " id="fr-tab-pane2" role="tabpanel" aria-labelledby="fr-tab2" tabindex="0">
-                        <div class="flight-booking-detail-info">
-                            <!-- flight booking -->
-                            <h3>ewfwegfew</h3>
-                            <!-- flight booking end -->
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </div> --}}
     </div>
 @endsection
 @section('script')
@@ -139,15 +122,29 @@
         $("#to").change(function() {
             chengeDate($("#from").val(), $("#to").val(), 'one_way')
             if ($("#return_way").is(":checked")) {
-            chengeDate($("#to").val(), $("#from").val(), 'round_way')
+                chengeDate($("#to").val(), $("#from").val(), 'round_way')
 
-        }
-            // available();
+            }
 
         });
+
+
+        $("#booking_round_way").click(function(e) {
+            e.preventDefault();
+
+            if ($('#one_way:checked').val() && $('#round_way:checked').val()) {
+
+                let url = $(this).attr('href') + '&one_way_id=' + $('#one_way').val() + '&round_way_id=' + $(
+                    '#round_way').val();
+                window.open(url, "_self")
+            } else {
+                alert('pleas select tickets ')
+            }
+        });
+
         $("#return_way").change(function() {
             chengeDate($("#to").val(), $("#from").val(), 'round_way')
-            console.log(';k[pk[pk]]');
+            // console.log(';k[pk[pk]]',$('#one_way').val(),$('#round_way').val());
         });
 
         function chengeDate(from, to, x) {

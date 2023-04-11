@@ -23,9 +23,11 @@
     <form action="{{ route('tickets.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="trip_id" value="{{ $trip->id }}">
+        <input type="hidden" name="return_trip_id" value="{{ $returnTrip?->id }}">
         <input type="hidden" name="type" value="one_way">
         <input type="hidden" name="seat_type_id" value="{{ $seatType->id}}">
         <input type="hidden" name="journey_date" value="{{ $journey_date}}">
+        <input type="hidden" name="return_date" value="{{ $return_date}}">
         <input type="hidden" name="numberOfPassengers" value="{{ $numberOfPassengers}}">
         <input type="hidden" name="numberOfChildren" value="{{ $numberOfChildren}}">
         <input type="hidden" name="numberOfAdult" value="{{ $numberOfAdult}}">
@@ -57,8 +59,8 @@
                     <div class="col-lg-4">
                         <div class="booking-summary">
                             <h4 class="mb-30">Booking Summary</h4>
-                            <x-trip.trip-info :trip="$trip" :numberOfChildren="$numberOfChildren" :numberOfAdult="$numberOfAdult" :seatType="$seatType"
-                                :journey_date="$journey_date"></x-trip.trip-info>
+                            <x-trip.trip-info :trip="$trip" :returnTrip="$returnTrip" :numberOfChildren="$numberOfChildren" :numberOfAdult="$numberOfAdult" :seatType="$seatType"
+                                :journey_date="$journey_date" :return_date="$return_date"></x-trip.trip-info>
 
                         </div>
                     </div>

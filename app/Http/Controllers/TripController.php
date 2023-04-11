@@ -85,7 +85,7 @@ class TripController extends Controller
     {
         try {
             DB::beginTransaction();
-                
+
                 $trip = Trip::create($request->validated());
                 $trip->days()->sync($request->days);
                 Alert::toast('Trip has been Created ', 'success')->position('top-end')->autoClose(5000);
@@ -165,9 +165,18 @@ class TripController extends Controller
 
         return redirect()->route('trip.index');
     }
-    public function booking( Trip $trip ,Request $request)
+    public function booking( Request $request)
     {
+        // dd($request->all());
+        $returnTrip=$return_date=null;
+        if (isset($request->one_way_id) && isset($request->round_way_id) ) {
+            $trip=Trip::find($request->one_way_id);
+            $return_date=$request->return_date;
+            $returnTrip=Trip::find($request->round_way_id);
 
+        } else {
+            $trip=Trip::find($request->trip_id);
+        }
 
         $seatType=SeatType::find($request->seat_types_id);
         $journey_date=$request->journey_date;
@@ -175,6 +184,6 @@ class TripController extends Controller
         $numberOfAdult=$request->numberOfAdult;
         $numberOfPassengers=$numberOfAdult + $numberOfChildren;
         // dd($numberOfPassengers,$numberOfAdult , $numberOfChildren);
-        return view("trip.booking",compact('trip','numberOfPassengers','numberOfChildren','numberOfAdult','seatType','journey_date'));
+        return view("trip.booking",compact('trip','returnTrip','numberOfPassengers','numberOfChildren','numberOfAdult','seatType','journey_date','return_date'));
     }
 }
