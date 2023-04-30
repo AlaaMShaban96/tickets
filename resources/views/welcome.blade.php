@@ -42,6 +42,7 @@
             @if (isset($trips['round_way']))
 
                 <a id="booking_round_way"
+                style="display: none;"
                     href="{{ route('trips.booking', [
                         'seat_types_id' => request()->get('seat_types_id'),
                         'journey_date' => request()->get('journey_date'),
@@ -88,6 +89,7 @@
                             </x-flight-booking.list>
 
                             <!-- flight booking end -->
+
                     @endif
 
                 </div>
@@ -130,16 +132,16 @@
 
 
         $("#booking_round_way").click(function(e) {
-            e.preventDefault();
+            // e.preventDefault();
 
-            if ($('#one_way:checked').val() && $('#round_way:checked').val()) {
+            // if ($('#one_way:checked').val() && $('#round_way:checked').val()) {
 
-                let url = $(this).attr('href') + '&one_way_id=' + $('#one_way').val() + '&round_way_id=' + $(
-                    '#round_way').val();
-                window.open(url, "_self")
-            } else {
-                alert('pleas select tickets ')
-            }
+            //     let url = $(this).attr('href') + '&one_way_id=' + $('#one_way').val() + '&round_way_id=' + $(
+            //         '#round_way').val();
+            //     window.open(url, "_self")
+            // } else {
+            //     alert('pleas select tickets ')
+            // }
         });
 
         $("#return_way").change(function() {
@@ -216,5 +218,24 @@
             }
 
         }
+
+
+
+
+        $('.select-trip').click(function(e) {
+            ///profile-tab
+            if ($(this).attr('name') == "round_way") {
+                let url = $("#booking_round_way").attr('href');
+                $("#booking_round_way").attr('href', url+'&round_way_id=' + $("#"+$(this).attr('id')).val()) ;
+                document.getElementById("booking_round_way").click();
+            } else {
+                let url = $("#booking_round_way").attr('href');
+                $("#booking_round_way").attr('href', url+'&one_way_id=' + $("#"+$(this).attr('id')).val())
+            document.getElementById("profile-tab").click();
+
+            }
+            // document.getElementById("profile-tab").click();
+            // console.log($(this).attr('id'),$("#"+$(this).attr('id')).val());
+        });
     </script>
 @endsection

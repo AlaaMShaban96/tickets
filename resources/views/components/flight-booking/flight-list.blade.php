@@ -62,8 +62,9 @@
 
 
                                 @if (request()->get('flight_type') == 'round_way')
-                                    <input type="radio" value="{{ $trip->id }}" id="{{ $tripType }}" name="{{ $tripType }}" >
-                                </a>
+
+                                    <input type="radio" class="btn-check select-trip" value="{{ $trip->id }}" name="{{ $tripType }}" id="option{{ $trip->id }}" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="option{{ $trip->id }}">select trip </label><br>
                                 @else
                                 <a target="_blank"
                                     href="{{ route('trips.booking', [

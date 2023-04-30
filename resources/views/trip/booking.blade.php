@@ -49,10 +49,16 @@
                             <x-trip.personal-info :trip="$trip" :numberOfPassengers="$numberOfPassengers"></x-trip.personal-info>
 
                         </div>
-                        <div class="booking-widget">
+                        {{-- <div class="booking-widget">
                             <h4 class="booking-widget-title">Your Card Information</h4>
                             <x-trip.payment-info></x-trip.Payment-info>
 
+                        </div> --}}
+                        <div class="col-lg-4">
+                            <div class="form-group mt-2">
+                                <button type="submit" class="theme-btn">Confirm Booking<i
+                                        class="far fa-arrow-right"></i></button>
+                            </div>
                         </div>
                     </div>
 
@@ -64,12 +70,12 @@
 
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    {{-- <div class="col-lg-4">
                         <div class="form-group mt-2">
                             <button type="submit" class="theme-btn">Confirm Booking<i
                                     class="far fa-arrow-right"></i></button>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

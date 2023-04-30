@@ -64,11 +64,6 @@
 
 
     <main class="main mt-5">
-
-
-
-
-
         <!-- login area -->
         <div class="login-area py-120">
             <div class="container">
